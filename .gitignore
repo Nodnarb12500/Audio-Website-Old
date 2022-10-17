@@ -132,3 +132,4 @@ dist
 
 # Custom Ignores
 package-lock.json
+*.sqlite3*
