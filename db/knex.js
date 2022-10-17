@@ -3,7 +3,7 @@ const knex = require("knex");
 const connectedKnex = knex({
   client: "sqlite3",
   connection: {
-    filename: "db/demo.sqlite3"
+    filename: "db/audio.sqlite3"
   }
 });
 

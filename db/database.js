@@ -7,27 +7,27 @@ const knex = require("./knex");
 
 /* Modifying the database */
 
-function createRow(data) {
-  return knex("tableName").insert(data);
+function createAudio(data) {
+  return knex("audios").insert(data);
 }
 
-function modifyRow(id, data) {
-  return knex("tableName").where("id", id).update(data);
+function modifyAudio(id, data) {
+  return knex("audios").where("id", id).update(data);
 }
 
-function deleteRow(id) {
-  return knex("tableName").where("id", id).del();
+function deleteAudio(id) {
+  return knex("audios").where("id", id).del();
 }
 
 /* Searching the database */
 
-function getRow(id) {
-  return knex("tableName").where("id", id);
+function getAudio(id) {
+  return knex("audios").where("id", id);
 }
 
 module.exports = {
-  createRow,
-  modifyRow,
-  deleteRow,
-  getRow
+  createAudio,
+  modifyAudio,
+  deleteAudio,
+  getAudio
 }
