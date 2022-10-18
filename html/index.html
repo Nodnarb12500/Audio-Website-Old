@@ -11,13 +11,13 @@
         <link rel="stylesheet" href="/resources/css/pages.css" type="text/css" media="screen"/>
 
     </head>
-    <body>
+    <body onload="load(searchbar.value, 1)">
         <div id="site-box" class="center">
 
             <div id="title" class="contentItem">
                 <h1>Audio X^3</h1>
                 <p>Here you'll find all the audios searchable and with only 25 audios placed on each page.</p>
-            </div>
+            </div> <!-- title -->
 
             <hr class="hidden" />
 
@@ -33,29 +33,11 @@
                      }
                  })
                 </script>
-            </div>
+            </div> <!-- searchBox -->
 
             <hr class="hidden" />
 
-            <div id="audioList" class="contentItem">
-                <div class="item">
-                    <p class="left">Name: Sexy hot penus inspection</p>
-                    <p class="right">Length: 13:48<br />Rating: 1/5</p>
-                </div>
-                <div class="item">
-                    <p class="left">Name: Super very Sexy hot penus inspection</p>
-                    <p class="right">Length: 13:48<br />Rating: 1/5</p>
-                </div>
-                <div class="item">
-                    <p class="left">Name: Super Sexy hot penus inspection</p>
-                    <p class="right">Length: 13:48<br />Rating: 1/5</p>
-                </div>
-                <div class="item">
-                    <p class="left">Name: Super Sexy hot JOI</p>
-                    <p class="right">Length: 13:48<br />Rating: 1/5</p>
-                </div>
-
-            </div> <!-- audioList -->
+            <div id="audioList" class="contentItem"></div> <!-- audioList -->
 
             <hr class="hidden" />
 
@@ -75,7 +57,7 @@
                 <hr class="hidden" />
 
                 <div id="gotoBox">
-                    <input type="number" name="gotoBar" value="" />
+                    <input type="number" name="gotoBar" id="gotoBar" value="" />
                     <button id="gotoBtn" onclick="load(searchbar.value, parseInt(gotoBar.value))"></button>
 
                     <script type="text/javascript">
