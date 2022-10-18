@@ -14,18 +14,20 @@ var getJSON = function(url, callback) {
     xhr.send();
 };
 
-function load(path) {
+function load(path, page) {
   /* read json from a get request and store it */
-  // getJSON('http://localhost:3000/manga',
+
   const url = window.location.href.split('/');
   let scheme = url[0];
   let site = url[2];
 
-  // if (path == "") {
-  //   var search = scheme + "//" + site + "/manga";
-  // } else {
-  //   var search = scheme + "//" + site + "/search/" + path;
-  // }
+  page = page - 1;
+
+  if (path == "") {
+    var search = scheme + "//" + site + "/db/search/all/" + page;
+  } else {
+    var search = scheme + "//" + site + "/search/" + path + "/" + page;
+  }
 
   console.log(path);
   console.log(search);
@@ -35,8 +37,6 @@ function load(path) {
             if (err !== null) {
               alert('Something went wrong: ' + err);
             } else {
-              //alert(data);
-              //console.log(data);
               listAudio(data);
             }
           });
@@ -61,31 +61,31 @@ function listAudio(data) {
 
       /* Main shit */
       let row = document.createElement("div");
-      let img = document.createElement("img");
       let name = document.createElement("p");
       let length = document.createElement("p");
-      let a = document.createElement("a");
 
-      img.src = manga.image;
-      img.loading = "lazy";
+      // let a = document.createElement("a");
+      // a.href = "/db/get/" + audios.id;
 
-      name.innerText = audio.name;
+      name.innerText = audios.name;
       name.className = "left";
 
-      length.innerText = "Length: " + audio.length + "\nRating: " + audio.rating;
+      length.innerText = "Length: " + audios.length + "\nRating: " + audios.rating;
       length.className = "right";
 
       /* make onclick event to go to manga/id */
-      a.href = "/db/get/" + audio.id;
 
-      a.appendChild(waveform);
-      a.appendChild(name);
+      row.appendChild(name);
+      row.appendChild(length);
 
-      row.style.backgroundImage = audio.waveform;
+      let imgPath = "/resources/media/thumbs/" + audios.waveform;
+      row.style.backgroundImage = "url(\'" + imgPath + "\')";
 
-      row.appendChild(a);
+      console.log(imgPath);
+
+      // row.appendChild(a);
       row.className = "item";
-      mangaBox.appendChild(row);
+      audioList.appendChild(row);
     }
   }
 }
