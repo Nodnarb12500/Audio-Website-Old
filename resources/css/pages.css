@@ -48,7 +48,8 @@ input[type=number] {
 
 
 .item {
-    max-width: 800px;
+    max-width: 640px;
+    height: 320px;
 
     margin: 3px;
     padding: 0px 10px 0px 10px;
@@ -63,10 +64,13 @@ input[type=number] {
 
 .item > .left {
     text-align: left;
+    color: white;
 }
 
 .item > .right {
     text-align: right;
+    color: white;
+
 }
 
 
