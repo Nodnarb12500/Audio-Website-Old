@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="/resources/css/main.css" type="text/css" media="screen"/>
-
+        <link rel="stylesheet" href="/resources/css/pages.css" type="text/css" media="screen"/>
 
     </head>
     <body>
@@ -19,17 +19,75 @@
                 <p>Here you'll find all the audios searchable and with only 25 audios placed on each page.</p>
             </div>
 
-            <div id="searchControls" class="contentItem">
+            <hr class="hidden" />
 
+            <div id="searchBox" class="contentItem">
+                <input type="text" placeholder="Search.." name="search" id="searchbar">
+                <button type="submit" id="searchButton" onclick="load(searchbar.value, 1)">&#128269;</button>
+
+                <script type="text/javascript">
+                 searchbar.addEventListener("keypress", (e) => {
+                     if (e.key === "Enter") {
+                         e.preventDefault();
+                         document.getElementById("searchButton").click();
+                     }
+                 })
+                </script>
             </div>
+
+            <hr class="hidden" />
 
             <div id="audioList" class="contentItem">
+                <div class="item">
+                    <p class="left">Name: Sexy hot penus inspection</p>
+                    <p class="right">Length: 13:48</p>
+                </div>
+                <div class="item">
+                    <p class="left">Name: Super very Sexy hot penus inspection</p>
+                    <p class="right">Length: 13:48</p>
+                </div>
+                <div class="item">
+                    <p class="left">Name: Super Sexy hot penus inspection</p>
+                    <p class="right">Length: 13:48</p>
+                </div>
+                <div class="item">
+                    <p class="left">Name: Super Sexy hot JOi</p>
+                    <p class="right">Length: 13:48</p>
+                </div>
 
+            </div> <!-- audioList -->
 
-            </div>
+            <div id="pagination" class="contentItem">
+
+                <div id="pageButtons" class="div">
+                    <a href="#">&laquo;</a>
+                    <a class="active" href="#">1</a>
+                    <a href="#" onclick="load(2)">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&raquo;</a>
+                </div> <!-- pagination -->
+
+                <div id="gotoBox">
+                    <input type="number" name="gotoBar" value="" />
+                    <button id="gotoBtn" onclick="load(searchbar.value, parseInt(gotoBar.value))"></button>
+
+                    <script type="text/javascript">
+                     gotoBar.addEventListener("keypress", (e) => {
+                         if (e.key === "Enter") {
+                             e.preventDefault();
+                             document.getElementById("gotoBtn").click();
+                         }
+                     })
+                    </script>
+
+                </div> <!-- gotoBox -->
+
+            </div> <!-- pagination -->
 
             <script type="text/javascript" src="/resources/js/index.js"></script>
-
         </div> <!-- site-box -->
     </body>
 </html>
