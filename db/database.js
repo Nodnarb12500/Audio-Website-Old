@@ -25,9 +25,22 @@ function getAudio(id) {
   return knex("audios").where("id", id);
 }
 
+function getTwentyFive(search, page) {
+  let n = page * 25;
+  if (search === "all") {
+    return knex("audios").select('*').limit(25).offset(n);
+
+  } else {
+    return knex("audios").whereLike("name", "\%" + search + "\%").limit(25).offset(n);
+
+  }
+}
+
+
 module.exports = {
   createAudio,
   modifyAudio,
   deleteAudio,
-  getAudio
+  getAudio,
+  getTwentyFive
 }

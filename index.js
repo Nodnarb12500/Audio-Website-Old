@@ -40,9 +40,16 @@ app.get("/db/get/:id", async (req, res) => {
 
 });
 
+/* database queries */
+app.get("/db/search/:search/:page", async (req, res) => {
+  const results = await db.getTwentyFive(req.params.search, req.params.page)
+  res.status(200).json({results});
+});
+
 /* user interactable pages */
 app.get("/", (req, res) => {
   res.sendFile('html/index.html', {root: __dirname});
 });
+
 
 app.listen(3000, () => console.log("server is listening on port 3069"));
