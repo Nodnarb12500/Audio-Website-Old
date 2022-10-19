@@ -66,9 +66,9 @@ function loadMedia(data) {
       length.innerText = "Length: " + audio.length + "\nRating: " + audio.rating;
       length.className = "rightInfo";
 
-      waveform.src = "/resources/media/thumbs/" + audio.waveform;
-
-      audioFile.src = audio.fileName;
+      waveform.src = "/resources/media/Music/thumbs/" + audio.waveform;
+      audioFile.src = "/resources/media/Music/" + audio.fileName;
+      audioFile.controls = true;
 
 
       info.appendChild(name);
@@ -79,13 +79,6 @@ function loadMedia(data) {
       mediaInfo.appendChild(info);
 
       audioPlayer.appendChild(audioFile);
-
-
-      // mediaInfo.appendChild(name);
-      // mediaInfo.appendChild(length);
-
-      // mediaInfo.appendChild(waveform);
-
 
     }
   }
