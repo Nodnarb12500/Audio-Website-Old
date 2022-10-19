@@ -53,6 +53,7 @@ function loadMedia(data) {
       /* Object prop is what i wanted i can now start using the ojects to create html */
       var audio = JSON.parse(JSON.stringify(obj[prop]));
 
+      let info = document.createElement("div")
       let name = document.createElement("p");
       let length = document.createElement("p");
 
@@ -67,22 +68,24 @@ function loadMedia(data) {
 
       waveform.src = "/resources/media/thumbs/" + audio.waveform;
 
-
-      console.log(name);
-      console.log(length);
-
-      mediaInfo.appendChild(name);
-      mediaInfo.appendChild(length);
-      mediaInfo.appendChild(waveform);
+      audioFile.src = audio.fileName;
 
 
-      <!-- diaply waveform and other information -->
-      <!-- Display: Name, Waveform?, length, Rating as stars -->
+      info.appendChild(name);
+      info.appendChild(length);
+      info.appendChild(waveform);
 
-      <!-- shit goes here -->
+      info.className = "container";
+      mediaInfo.appendChild(info);
+
+      audioPlayer.appendChild(audioFile);
 
 
-      <!-- Star rating system under the audio -->
+      // mediaInfo.appendChild(name);
+      // mediaInfo.appendChild(length);
+
+      // mediaInfo.appendChild(waveform);
+
 
     }
   }

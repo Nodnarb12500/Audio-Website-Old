@@ -1,11 +1,11 @@
 
 /* General Page Shit */
 #mediaInfo {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    /* align-items: stretch; */
     /* padding-top: 25px; */
 }
 
@@ -13,24 +13,49 @@
     margin: 3px;
 }
 
+.container {
+    max-width: 640px;
+    position: relative;
+}
+
+.container img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.container .rightInfo {
+    color: white;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    text-align: right;
+}
+
+.container .leftInfo {
+    color: white;
+    position: absolute;
+    top: 5px;
+    left: 15px;
+}
+
 .button {
     margin: 10px;
 }
 
-.leftInfo {
-    float: left;
-    padding-right: 1vh;
-}
+/* .leftInfo { */
+/*     float: left; */
+/*     padding-right: 1vh; */
+/* } */
 
-.rightInfo {
-    float: right;
-    text-align: left;
-    /* margin-top: 50px; */
-}
+/* .rightInfo { */
+/*     float: right; */
+/*     text-align: left; */
+/*     /\* margin-top: 50px; *\/ */
+/* } */
 
-.rightInfo p {
-    max-width: 300px;
-}
+/* .rightInfo p { */
+/*     max-width: 300px; */
+/* } */
 
 #loadingText {
     font-size: 4em;
@@ -72,13 +97,13 @@
 }
 
 /* better mobile support */
-@media only screen and (max-width: 625px) {
-    .leftInfo {
-        float: unset;
-    }
+/* @media only screen and (max-width: 625px) { */
+/*     .leftInfo { */
+/*         float: unset; */
+/*     } */
 
-    .rightInfo {
-        float: unset;
-        text-align: unset;
-    }
-}
+/*     .rightInfo { */
+/*         float: unset; */
+/*         text-align: unset; */
+/*     } */
+/* } */
