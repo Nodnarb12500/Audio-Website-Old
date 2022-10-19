@@ -14,10 +14,12 @@ var getJSON = function(url, callback) {
     xhr.send();
 };
 
+var url;
+
 function load(path, page) {
   /* read json from a get request and store it */
 
-  const url = window.location.href.split('/');
+  url = window.location.href.split('/');
   page = parseInt(page) - 1;
 
   if (path == "") {
@@ -83,17 +85,19 @@ function listAudio(data) {
 
       // row.appendChild(a);
       row.className = "item";
+      row.addEventListener("click", (e) => {
+        window.open(url[0] + "//" + url[2] + "/audio/" + audios.id);
+      })
       audioList.appendChild(row);
     }
   }
 }
 
 function pagesBar(page) {
-  /* pagination */
-
   /* clear out the old buttons */
   pageButtons.innerHTML = "";
 
+  /* page buttons */
   let first = document.createElement("a");
   let index1 = document.createElement("a");
   let index2 = document.createElement("a");

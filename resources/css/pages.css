@@ -60,6 +60,8 @@ input[type=number] {
 
     /* overflow: hidden; */
     word-break: break-word;
+
+    cursor: pointer;
 }
 
 .item > .left {
