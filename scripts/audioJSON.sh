@@ -10,7 +10,9 @@ set -x
 
 # Variables
 declare -a audio_List
-mapfile -t audio_List < <( find ./ | grep -i -e .m4a -e .mp3 -e .wav -e .wma -e .acc -e .flac)
+# as i discover what files work without adding extra shit and what doesnt this list will change
+# tested not working: wma
+mapfile -t audio_List < <( find ./ | grep -i -e .m4a -e .mp3 -e .wav -e .acc -e .flac)
 
 iteration="0"
 

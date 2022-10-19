@@ -14,6 +14,10 @@ var getJSON = function(url, callback) {
     xhr.send();
 };
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function getMedia() {
   /* Ask the server for the manga Data */
   const url = window.location.href.split('/');
@@ -60,26 +64,62 @@ function loadMedia(data) {
       let waveform = document.createElement("img");
       let audioFile = document.createElement("audio");
 
+
+      let progressBar = document.createElement("div");
+
       name.innerText = audio.name;
       name.className = "leftInfo";
 
       length.innerText = "Length: " + audio.length + "\nRating: " + audio.rating;
       length.className = "rightInfo";
 
+      progressBar.id = "progressBar";
+
       waveform.src = "/resources/media/Music/thumbs/" + audio.waveform;
-      audioFile.src = "/resources/media/Music/" + audio.fileName;
-      audioFile.controls = true;
+      waveform.id = "waveformImg";
 
+      waveform.addEventListener("click", (e) => {
 
+        if (document.getElementById("audioFile").paused) {
+          document.getElementById("audioFile").play();
+
+        } else {
+          document.getElementById("audioFile").pause();
+
+        }
+        
+      });
+
+      
       info.appendChild(name);
       info.appendChild(length);
+      info.appendChild(progressBar);
       info.appendChild(waveform);
 
       info.className = "container";
+
       mediaInfo.appendChild(info);
+
+      audioFile.id = "audioFile";
+      audioFile.src = "/resources/media/Music/" + audio.fileName;
+      audioFile.controls = true;
+
+      audioFile.ontimeupdate = function() {
+        waveformDisplay();
+      }
 
       audioPlayer.appendChild(audioFile);
 
     }
   }
+}
+
+async function waveformDisplay(consuming) {
+
+  var timePercent = Math.round((parseInt(audioFile.currentTime) / parseInt(audioFile.duration)) * 100);
+  let decimalPercent = (waveformImg.width * (parseInt(timePercent) / 100));
+
+  audioTime.innerText = timePercent + "%";
+  progressBar.style.left = decimalPercent + "px";
+
 }

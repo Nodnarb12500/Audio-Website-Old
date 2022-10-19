@@ -21,7 +21,22 @@
 
             <div id="mediaInfo" class="contentItem">
                 <!-- I want the audio information overlayed on the waveform -->
+
+
+                <!-- overlay the paused icon on the waveform when paused -->
             </div> <!-- audioInfo -->
+
+            <hr />
+
+            <div id="audioPlayer" class="contentItem">
+                <!-- audio goes here and maybe an HTML5 canvas with a waveform in it -->
+
+
+            </div> <!-- audio -->
+
+            <div>
+                <input type="range" name="seekBar" min="0" max="1" value="0" />
+            </div
 
             <hr />
 
@@ -52,9 +67,10 @@
             </div> <!-- ratingBox -->
             <hr />
 
-            <div id="audioPlayer" class="contentItem">
-                <!-- audio goes here and maybe an HTML5 canvas with a waveform in it -->
-            </div> <!-- audio -->
+
+            <div class="contentItem">
+                <p id="audioTime"></p>
+            </div>
 
             <script type="text/javascript" src="/resources/js/media.js"></script>
         </div> <!-- site-box -->
