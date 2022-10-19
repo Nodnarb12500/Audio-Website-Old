@@ -1,0 +1,84 @@
+
+/* General Page Shit */
+#mediaInfo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    /* padding-top: 25px; */
+}
+
+#mediaInfo * {
+    margin: 3px;
+}
+
+.button {
+    margin: 10px;
+}
+
+.leftInfo {
+    float: left;
+    padding-right: 1vh;
+}
+
+.rightInfo {
+    float: right;
+    text-align: left;
+    /* margin-top: 50px; */
+}
+
+.rightInfo p {
+    max-width: 300px;
+}
+
+#loadingText {
+    font-size: 4em;
+    animation-name: loading;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes loading {
+    0% {transform: scale(1,1)}
+    50% {transform: scale(1.5,1.5)}
+    100% {transform: scale(1,1)}
+}
+
+/* The extremely annoying to make checkboxes */
+.StarContainer {
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+    font-size: 45px;
+}
+
+.StarContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark:after {
+    content: '\2606';
+}
+
+.StarContainer input:checked ~ .checkmark:after {
+    content: '\2605';
+}
+
+.checkBefore:after {
+    content: "\2605";
+}
+
+/* better mobile support */
+@media only screen and (max-width: 625px) {
+    .leftInfo {
+        float: unset;
+    }
+
+    .rightInfo {
+        float: unset;
+        text-align: unset;
+    }
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Media</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/resources/css/main.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="/resources/css/mediaPage.css" type="text/css" media="screen"/>
+
+    </head>
+    <body onload="getMedia();">
+
+        <div id="site-box" class="center">
+
+            <div id="title" class="contentItem"></div> <!-- title -->
+            <div id="mediaInfo" class="contentItem">
+                <!-- I want the audio information overlayed on the waveform -->
+            </div> <!-- audioInfo -->
+
+            <div id="ratingBox" class="contentItems">
+                <form method="POST" id="ratingForm">
+                    <label class="StarContainer">
+                        <input type="radio" name="likes" value="1" />
+                        <span id="one" class="checkmark" onclick="prependChecks(1)" ></span>
+                    </label>
+                    <label class="StarContainer">
+                        <input type="radio" name="likes" value="2" />
+                        <span id="two" class="checkmark" onclick="prependChecks(2)"></span>
+                    </label>
+                    <label class="StarContainer">
+                        <input type="radio" name="likes" value="3" />
+                        <span id="three" class="checkmark" onclick="prependChecks(3)"></span>
+                    </label>
+                    <label class="StarContainer">
+                        <input type="radio" name="likes" value="4" />
+                        <span id="four" class="checkmark" onclick="prependChecks(4)"></span>
+                    </label>
+                    <label class="StarContainer">
+                        <input type="radio" name="likes" value="5" />
+                        <span id="five" class="checkmark" onclick="prependChecks(5)"></span>
+                    </label>
+                    <input type="submit" value="Rate" />
+                </form>
+            </div> <!-- ratingBox -->
+            <hr />
+
+            <div id="audio" class="contentItem">
+                <!-- audio goes here and maybe an HTML5 canvas with a waveform in it -->
+            </div> <!-- audio -->
+
+            <script type="text/javascript" src="/resources/js/media.js"></script>
+        </div> <!-- site-box -->
+
+    </body>
+</html>
