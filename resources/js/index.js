@@ -79,7 +79,7 @@ function listAudio(data) {
       row.appendChild(length);
 
       let imgPath = "/resources/media/thumbs/" + audios.waveform;
-      row.style.backgroundImage = "url(\'" + imgPath + "\')";
+      row.style.backgroundImage = `url(\"` + imgPath + `\")`;
 
       console.log(imgPath);
 
