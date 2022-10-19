@@ -18,16 +18,13 @@ function load(path, page) {
   /* read json from a get request and store it */
 
   const url = window.location.href.split('/');
-  let scheme = url[0];
-  let site = url[2];
-
-  page = page - 1;
+  page = parseInt(page) - 1;
 
   if (path == "") {
-    var search = scheme + "//" + site + "/db/search/all/" + page;
-  } else {
-    var search = scheme + "//" + site + "/search/" + path + "/" + page;
+    path = "all";
   }
+
+  let search = url[0] + "//" + url[2] + "/db/search/" + path + "/" + page;
 
   console.log(path);
   console.log(search);
@@ -38,6 +35,7 @@ function load(path, page) {
               alert('Something went wrong: ' + err);
             } else {
               listAudio(data);
+              pagesBar(page);
             }
           });
 }
@@ -88,4 +86,89 @@ function listAudio(data) {
       audioList.appendChild(row);
     }
   }
+}
+
+function pagesBar(page) {
+  /* pagination */
+
+  /* clear out the old buttons */
+  pageButtons.innerHTML = "";
+
+  let first = document.createElement("a");
+  let index1 = document.createElement("a");
+  let index2 = document.createElement("a");
+  let index3 = document.createElement("a");
+  let index4 = document.createElement("a");
+  let index5 = document.createElement("a");
+  let last = document.createElement("a");
+
+  let indexOneVal = "0";
+  if (parseInt(page) >= 3) {
+    indexOneVal = page - 1;
+  } else {
+    indexOneVal = "1";
+  }
+
+  first.innerText = "«";
+  first.href = "#";
+  first.addEventListener("click", (e) => {
+    load(searchbar.value, 1);
+  });
+
+  index1.innerText = indexOneVal;
+  index1.href = "#";
+  if (parseInt(page) == 0) {
+    index1.className = "active";
+  }
+  index1.addEventListener("click", (e) => {
+    load(searchbar.value, indexOneVal);
+  });
+
+  let indexTwoVal = parseInt(indexOneVal) + 1;
+  index2.innerText = indexTwoVal;
+  index2.href = "#";
+  if (parseInt(page) == 1) {
+    index2.className = "active";
+  }
+  index2.addEventListener("click", (e) => {
+    load(searchbar.value, indexTwoVal);
+  });
+
+  let indexThreeVal = parseInt(indexTwoVal) + 1;
+  index3.innerText = indexThreeVal;
+  index3.href = "#";
+  if (parseInt(page) >= 2) {
+    index3.className = "active";
+  }
+  index3.addEventListener("click", (e) => {
+    load(searchbar.value, indexThreeVal);
+  });
+
+  let indexFourVal = parseInt(indexThreeVal) + 1;
+  index4.innerText = indexFourVal;
+  index4.href = "#";
+  index4.addEventListener("click", (e) => {
+    load(searchbar.value, indexFourVal);
+  });
+
+  let indexFiveVal = parseInt(indexFourVal) + 1;
+  index5.innerText = indexFiveVal;
+  index5.href = "#";
+  index5.addEventListener("click", (e) => {
+    load(searchbar.value, indexFiveVal);
+  });
+
+  last.innerText = "»";
+  last.href = "#";
+  last.addEventListener("click", (e) => {
+    load(searchbar.value, indexOneVal);
+  });
+
+  pageButtons.appendChild(first);
+  pageButtons.appendChild(index1);
+  pageButtons.appendChild(index2);
+  pageButtons.appendChild(index3);
+  pageButtons.appendChild(index4);
+  pageButtons.appendChild(index5);
+  pageButtons.appendChild(last);
 }
