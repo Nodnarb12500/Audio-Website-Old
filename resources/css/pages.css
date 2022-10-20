@@ -49,7 +49,11 @@ input[type=number] {
 
 .item {
     max-width: 640px;
-    height: 320px;
+    max-height: 320px;
+    width: 100%;
+    height: 100%;
+
+    aspect-ratio: 2/1;
 
     margin: 3px;
     padding: 0px 10px 0px 10px;
@@ -59,19 +63,32 @@ input[type=number] {
     border-radius: 15px;
 
     /* overflow: hidden; */
-    word-break: break-word;
+    /* word-break: break-word; */
 
-    cursor: pointer;
+    /* cursor: pointer; */
+
+    position: relative;
+
 }
 
-.item > .left {
+.item .left {
     text-align: left;
+    position: absolute;
+    left: 0;
+    top: 5px;
     color: white;
+    background-color: black;
 }
 
-.item > .right {
+.item .right {
     text-align: right;
     color: white;
+    background-color: black;
+
+    position: absolute;
+
+    bottom: 5px;
+    right: 5px;
 
 }
 
