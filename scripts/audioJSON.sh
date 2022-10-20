@@ -27,7 +27,7 @@ do
     iteration=$((iteration + 1))
 
     input="$i"
-    ext=".$(echo $input | cut -f 2- -d '.')"
+    ext=".$(echo $input | cut -f 2- -d '.' | cut -f 2- -d '.')"
     name=$(basename "$input" "$ext")
     output="$name.png"
 
