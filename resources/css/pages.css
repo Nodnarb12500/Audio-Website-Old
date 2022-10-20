@@ -48,6 +48,10 @@ input[type=number] {
 
 
 .item {
+
+    background-size: cover;
+    background-position: center;
+
     max-width: 640px;
     max-height: 320px;
     width: 100%;
@@ -77,13 +81,13 @@ input[type=number] {
     left: 0;
     top: 5px;
     color: white;
-    background-color: black;
+    background-color: rgba(0, 0, 0, .4);
 }
 
 .item .right {
     text-align: right;
     color: white;
-    background-color: black;
+    background-color: rgba(0, 0, 0, .4);
 
     position: absolute;
 

@@ -49,6 +49,10 @@ p {
 	color: var(--curr-text);
 }
 
+hr {
+	color: var(--curr-text);
+}
+
 #site-box {
 
 }

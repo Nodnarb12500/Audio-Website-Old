@@ -28,8 +28,8 @@ function load(path, page) {
 
   let search = url[0] + "//" + url[2] + "/db/search/" + path + "/" + page;
 
-  console.log(path);
-  console.log(search);
+  // console.log(path);
+  // console.log(search);
 
   getJSON(search,
           function(err, data) {
@@ -70,7 +70,23 @@ function listAudio(data) {
       name.innerText = audios.name;
       name.className = "left";
 
-      length.innerText = "Length: " + audios.length + "\nRating: " + audios.rating;
+      let starRating = "";
+      if (audios.rating != "-1") {
+        for (let i = parseInt(audios.rating); i != 0; i--) {
+          starRating = starRating.concat("&starf;");
+        };
+        /* fill in the rest of the stars with empty ones */
+        for (let i = 5 - parseInt(audios.rating); i != 0; i--) {
+          starRating = starRating.concat("&star;");
+        }
+
+      } else {
+        for (let i = 5; i != 0; i--) {
+          starRating = starRating.concat("&star;");
+        }
+      }
+
+      length.innerHTML = "Length: " + audios.length + "<br />Rating: " + starRating;
       length.className = "right";
 
       /* make onclick event to go to manga/id */
@@ -80,8 +96,6 @@ function listAudio(data) {
 
       let imgPath = "/resources/media/thumbs/" + audios.waveform;
       row.style.backgroundImage = `url(\"` + imgPath + `\")`;
-
-      console.log(imgPath);
 
       // row.appendChild(a);
       row.className = "item";
