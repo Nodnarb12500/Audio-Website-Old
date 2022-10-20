@@ -96,18 +96,7 @@ function loadMedia(data) {
       waveform.id = "waveformImg";
       waveform.draggable = false;
 
-      waveform.addEventListener("click", waveformClick, false);
-
-      waveform.addEventListener("mousedown", (e) => {
-        // seek and play
-        console.log("middle click")
-        audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
-
-        if (document.getElementById("audioFile").paused) {
-          document.getElementById("audioFile").play();
-        }
-
-      });
+      waveform.addEventListener("mousedown", waveformClick, false);
 
       info.appendChild(name);
       info.appendChild(progressBar);
@@ -144,24 +133,41 @@ function waveformClick(e) {
         pendingClick = 0;
     }
 
-  switch (e.detail) {
-    case 1:
-      pendingClick = setTimeout(function() {
-        audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
-      }, 150);
-    break;
-    case 2:
-      // play/pause toggle
-      if (document.getElementById("audioFile").paused) {
-        document.getElementById("audioFile").play();
-      } else {
-        document.getElementById("audioFile").pause();
-      }
-    break;
-    default:
-      console.log('higher multi-click actions can be added as needed');
-    break;
+  if (e.button == 0) {
+    switch (e.detail) {
+      case 1:
+        pendingClick = setTimeout(function() {
+          console.log("Single Click");
+          audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
+        }, 150);
+      break;
+      case 2:
+        console.log("Double Click");
+        // play/pause toggle
+        if (document.getElementById("audioFile").paused) {
+          document.getElementById("audioFile").play();
+        } else {
+          document.getElementById("audioFile").pause();
+        }
+      break;
+      default:
+        console.log('higher multi-click actions can be added as needed');
+      break;
     }
+  } else if (e.button == 1) {
+    e.preventDefault();
+    console.log("middle click");
+    audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
+
+    if (document.getElementById("audioFile").paused) {
+      document.getElementById("audioFile").play();
+    }
+  } else if (e.button == 2) {
+    e.preventDefault();
+    console.log("rightclick");
+  }
+
+
 }
 
 function prependChecks(a) {
