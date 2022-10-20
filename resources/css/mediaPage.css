@@ -24,10 +24,7 @@
     position: relative;
 }
 
-.container img {
-    width: 100%;
-    border-radius: 15px;
-
+.container * {
     /* stop a waveform from being dragable */
     user-drag: none;
     -webkit-user-drag: none;
@@ -36,6 +33,11 @@
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+}
+
+.container img {
+    width: 100%;
+    border-radius: 15px;
 }
 
 .container .rightInfo {
