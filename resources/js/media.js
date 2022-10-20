@@ -148,26 +148,27 @@ function waveformClick(e) {
 
 
       break;
-
       case 2:
-        // Double click
-        console.log("Double Click");
+        pendingClick = setTimeout(() => {
+          console.log("Double Click");
 
-        // play/pause toggle
-        if (document.getElementById("audioFile").paused) {
-          document.getElementById("audioFile").play();
-        } else {
-          document.getElementById("audioFile").pause();
-        }
+          // play/pause toggle
+          if (document.getElementById("audioFile").paused) {
+            document.getElementById("audioFile").play();
+          } else {
+            document.getElementById("audioFile").pause();
+          }
+
+        }, 150) // double click stuff
+
 
       break;
-
       case 3:
         // Triple Click
-        console.log("triple click")
+        console.log("Triple click")
 
         // Seek
-        audioFile.currentTime = (e.offsetX / waveform.width) * audioFile.duration;
+        audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
 
         // play/pause toggle
         if (document.getElementById("audioFile").paused) {
@@ -178,14 +179,12 @@ function waveformClick(e) {
 
         //debug
         break;
-
-        default:
+      default:
         console.log('higher multi-click actions can be added as needed');
-        break;
+      break;
 
     }
 }
-
 
 function prependChecks(a) {
   // uncheck everything
