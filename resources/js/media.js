@@ -124,21 +124,27 @@ function loadMedia(data) {
   }
 }
 
-/* single/double/triple click */
+/* Variables */
 var pendingClick;
+
+/* single/double/triple click */
 function waveformClick(e) {
-    // kill any pending single clicks
     if (pendingClick) {
         clearTimeout(pendingClick);
         pendingClick = 0;
-    }
+    }// kill any pending single clicks
+
+  let offsetX = e.offsetX;
+  let offsetY = e.offsetY;
 
   if (e.button == 0) {
     switch (e.detail) {
       case 1:
         pendingClick = setTimeout(function() {
           console.log("Single Click");
-          audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
+          audioFile.currentTime = (offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
+          console.log(offsetX);
+          console.log((offsetX / document.getElementById("waveformImg").width) * audioFile.duration);
         }, 150);
       break;
       case 2:
@@ -158,16 +164,14 @@ function waveformClick(e) {
     e.preventDefault();
     console.log("middle click");
     audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
+    console.log((e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration);
 
     if (document.getElementById("audioFile").paused) {
       document.getElementById("audioFile").play();
     }
   } else if (e.button == 2) {
-    e.preventDefault();
     console.log("rightclick");
   }
-
-
 }
 
 function prependChecks(a) {
@@ -176,13 +180,10 @@ function prependChecks(a) {
   two.className = "checkmark";
   three.className = "checkmark";
   four.className = "checkmark";
-
   document.getElementById("ratingBtn").value = "Rate";
 
   // Check what should get checked
   switch(a) {
-    case 1:
-    break;
     case 2:
       one.className = "checkBefore";
     break;
@@ -200,9 +201,6 @@ function prependChecks(a) {
       two.className = "checkBefore";
       three.className = "checkBefore";
       four.className = "checkBefore";
-    break;
-    default:
-      alert("You broke something somehow");
     break;
   }
 
