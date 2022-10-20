@@ -101,6 +101,7 @@ function loadMedia(data) {
         // console.log("X: " + e.offsetX + " Y: " + e.offsetY);
 
         // reserve some space for pausing and some space for seeking
+        // TODO NEEDS CHANGE THIS CONDITION IS NOT SCALEABLE
         if (110 < e.offsetY && e.offsetY < 210) {
             audioFile.currentTime = (e.offsetX / waveform.width) * audioFile.duration;
         } else {
@@ -115,8 +116,8 @@ function loadMedia(data) {
       });
 
       info.appendChild(name);
-      info.appendChild(length);
       info.appendChild(progressBar);
+      info.appendChild(length);
       info.appendChild(waveform);
 
       info.className = "container";
@@ -132,6 +133,9 @@ function loadMedia(data) {
       }
 
       audioPlayer.appendChild(audioFile);
+
+      /* set the POST url for the rating form */
+      ratingForm.action = "/db/modify/" + audio.id;
 
     }
   }

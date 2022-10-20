@@ -35,25 +35,29 @@
             <hr />
 
             <div id="ratingBox" class="contentItems">
-                <form method="POST" id="ratingForm">
+                <!-- this is here so that rating the audio doesnt destroy the site and interupt the user -->
+                <iframe class="hidden" frameborder="0" name="poster"></iframe>
+
+                <!-- the cool star rating system that was a passive pain in the ass t make -->
+                <form method="POST" id="ratingForm" target="poster">
                     <label class="StarContainer">
-                        <input type="radio" name="likes" value="1" />
+                        <input type="radio" name="rating" value="1" />
                         <span id="one" class="checkmark" onclick="prependChecks(1)" ></span>
                     </label>
                     <label class="StarContainer">
-                        <input type="radio" name="likes" value="2" />
+                        <input type="radio" name="rating" value="2" />
                         <span id="two" class="checkmark" onclick="prependChecks(2)"></span>
                     </label>
                     <label class="StarContainer">
-                        <input type="radio" name="likes" value="3" />
+                        <input type="radio" name="rating" value="3" />
                         <span id="three" class="checkmark" onclick="prependChecks(3)"></span>
                     </label>
                     <label class="StarContainer">
-                        <input type="radio" name="likes" value="4" />
+                        <input type="radio" name="rating" value="4" />
                         <span id="four" class="checkmark" onclick="prependChecks(4)"></span>
                     </label>
                     <label class="StarContainer">
-                        <input type="radio" name="likes" value="5" />
+                        <input type="radio" name="rating" value="5" />
                         <span id="five" class="checkmark" onclick="prependChecks(5)"></span>
                     </label>
                     <input type="submit" value="Rate" />
