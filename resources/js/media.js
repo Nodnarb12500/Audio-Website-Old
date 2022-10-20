@@ -125,7 +125,7 @@ function loadMedia(data) {
 }
 
 /* single/double/triple click */
-var pendingClick = 0;
+var pendingClick;
 function waveformClick(e) {
     // kill any pending single clicks
     if (pendingClick) {
@@ -136,14 +136,16 @@ function waveformClick(e) {
     switch (e.detail) {
       case 1:
         pendingClick = setTimeout(function() {
-          console.log('single click action here');
-        }, 500);// should match OS multi-click speed
+          /* single click options should be in here */
 
-        // Single click
-        console.log("Single Click");
+          // debuggin
+          console.log("Single Click");
 
-        // Seek
-        audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
+          // Seek
+          audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
+
+        }, 150);// should match OS multi-click speed
+
 
       break;
 
