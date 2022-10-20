@@ -97,14 +97,21 @@ function loadMedia(data) {
       waveform.id = "waveformImg";
 
       waveform.addEventListener("click", (e) => {
-        // Heres the play/pause toggle
-        if (document.getElementById("audioFile").paused) {
-          document.getElementById("audioFile").play();
-        } else {
-          document.getElementById("audioFile").pause();
-        }
-
+        // debugging
         console.log("X: " + e.offsetX + " Y: " + e.offsetY);
+
+        // reserve some space for pausing and some space for seeking
+        if (110 < e.offsetY && e.offsetY < 210) {
+            audioFile.currentTime = (e.offsetX / waveform.width) * audioFile.duration;
+        } else {
+          // Heres the play/pause toggle
+          if (document.getElementById("audioFile").paused) {
+            document.getElementById("audioFile").play();
+          } else {
+            document.getElementById("audioFile").pause();
+          }
+          console.log("bonk");
+        }
       });
 
       info.appendChild(name);
