@@ -16,7 +16,7 @@
 .container #progressBar {
     /* max-height: 320px; */
     background-color: steelblue;
-    padding-right: 4px;
+    padding-right: 3px;
 
     position: absolute;
     top: 25px;
@@ -44,7 +44,7 @@
 
 .container .rightInfo {
     color: white;
-    background-color: black;
+    background-color: rgba(0, 0, 0, .4);
     position: absolute;
     bottom: 5px;
     right: 10px;
@@ -53,6 +53,7 @@
 
 .container .leftInfo {
     color: white;
+    background-color: rgba(0, 0, 0, .4);
     position: absolute;
     top: 5px;
     left: 15px;
