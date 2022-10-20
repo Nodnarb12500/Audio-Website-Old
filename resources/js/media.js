@@ -178,6 +178,6 @@ async function waveformDisplay(consuming) {
   var timePercent = (parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
   let decimalPercent = (waveformImg.width * (parseFloat(timePercent)));
 
-  progressBar.style.left = (parseFloat(decimalPercent) - 4) + "px";
+  progressBar.style.left = (parseFloat(decimalPercent) - 3) + "px";
 
 }
