@@ -1,20 +1,6 @@
 
 /* Color scheme shit */
 :root {
-	/* darkBackground */
-	--darkBackground: #1f1d20;
-	--darkBackground-border: whitesmoke;
-	--darkBackground-text: white;
-	--darkBackground-link: darkgrey;
-
-	/* lightBackground */
-	--lightBackground: white;
-	--lightBackground-border: black;
-	--lightBackground-box: whitesmoke;
-	--lightBackground-text: black;
-	--lightBackground-link: unset;
-
-
 	/* Currently used Variables */
 	--curr-button: #2196F3;
 	--curr-buttonHover: #0b7dda;
@@ -25,11 +11,12 @@
 
 @media(prefers-color-scheme: dark) {
 	:root {
-		--curr-bg: var(--darkBackground);
-		--curr-box: var(--darkBackground);
-		--curr-border: var(--darkBackground-border);
-		--curr-text: var(--darkBackground-text);
-		--curr-link: var(--darkBackground-link);
+		/* darkBackground */
+		--curr-bg: #1f1d20;
+		--curr-box: #1f1d20;
+		--curr-border: whitesmoke;
+		--curr-text: white;
+		--curr-link: darkgrey;
 
 	}
 }
@@ -37,12 +24,12 @@
 
 @media(prefers-color-scheme: light) {
 	:root {
-		/* Set the light vars when client prefers it */
-		--curr-bg: var(--lightBackground);
-		--curr-border: var(--lightBackground-border);
-		--curr-box: var(--lightBackground-box);
-		--curr-text: var(--lightBackground-text);
-		--curr-link: var(--lightBackground-link);
+		/* lightBackground */
+		--curr-bg: white;
+		--curr-border: black;
+		--curr-box: whitesmoke;
+		--curr-text: black;
+		--curr-link: unset;
 
 	}
 }
