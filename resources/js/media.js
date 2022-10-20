@@ -96,24 +96,7 @@ function loadMedia(data) {
       waveform.id = "waveformImg";
       waveform.draggable = false;
 
-      waveform.addEventListener("click", (e) => {
-        // debugging
-        // console.log("X: " + e.offsetX + " Y: " + e.offsetY);
-
-        // reserve some space for pausing and some space for seeking
-        // TODO NEEDS CHANGE THIS CONDITION IS NOT SCALEABLE
-        if (110 < e.offsetY && e.offsetY < 210) {
-            audioFile.currentTime = (e.offsetX / waveform.width) * audioFile.duration;
-        } else {
-          // Heres the play/pause toggle
-          if (document.getElementById("audioFile").paused) {
-            document.getElementById("audioFile").play();
-          } else {
-            document.getElementById("audioFile").pause();
-          }
-          console.log("bonk");
-        }
-      });
+      waveform.addEventListener("click", waveformClick, false);
 
       info.appendChild(name);
       info.appendChild(progressBar);
@@ -140,6 +123,67 @@ function loadMedia(data) {
     }
   }
 }
+
+/* single/double/triple click */
+var pendingClick = 0;
+function waveformClick(e) {
+    // kill any pending single clicks
+    if (pendingClick) {
+        clearTimeout(pendingClick);
+        pendingClick = 0;
+    }
+
+    switch (e.detail) {
+      case 1:
+        pendingClick = setTimeout(function() {
+          console.log('single click action here');
+        }, 500);// should match OS multi-click speed
+
+        // Single click
+        console.log("Single Click");
+
+        // Seek
+        audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
+
+      break;
+
+      case 2:
+        // Double click
+        console.log("Double Click");
+
+        // play/pause toggle
+        if (document.getElementById("audioFile").paused) {
+          document.getElementById("audioFile").play();
+        } else {
+          document.getElementById("audioFile").pause();
+        }
+
+      break;
+
+      case 3:
+        // Triple Click
+        console.log("triple click")
+
+        // Seek
+        audioFile.currentTime = (e.offsetX / waveform.width) * audioFile.duration;
+
+        // play/pause toggle
+        if (document.getElementById("audioFile").paused) {
+          document.getElementById("audioFile").play();
+        } else {
+          document.getElementById("audioFile").pause();
+        }
+
+        //debug
+        break;
+
+        default:
+        console.log('higher multi-click actions can be added as needed');
+        break;
+
+    }
+}
+
 
 function prependChecks(a) {
   one.className = "checkmark";
