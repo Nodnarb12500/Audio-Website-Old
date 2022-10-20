@@ -15,7 +15,6 @@
 
 .container #progressBar {
     /* max-height: 320px; */
-
     border: 2px solid white;
 
     color: white;
@@ -23,7 +22,6 @@
     top: 25px;
     bottom: 25px;
     left: 0;
-
 }
 
 .container {
@@ -44,6 +42,20 @@
     text-align: right;
 }
 
+/* input[type=range] { */
+/*     -webkit-appearance: none; */
+/*     background: rgba(0, 0, 0, 0); */
+/*     width: 640px; */
+
+/*     cursor: pointer; */
+/*     position: absolute; */
+
+/*     top: 25%; */
+/*     bottom: 25%; */
+/*     left: 0; */
+/*     right: 0; */
+/* } */
+
 .container .leftInfo {
     color: white;
     position: absolute;
@@ -54,21 +66,6 @@
 .button {
     margin: 10px;
 }
-
-/* .leftInfo { */
-/*     float: left; */
-/*     padding-right: 1vh; */
-/* } */
-
-/* .rightInfo { */
-/*     float: right; */
-/*     text-align: left; */
-/*     /\* margin-top: 50px; *\/ */
-/* } */
-
-/* .rightInfo p { */
-/*     max-width: 300px; */
-/* } */
 
 #loadingText {
     font-size: 4em;

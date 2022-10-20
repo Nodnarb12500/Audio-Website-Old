@@ -43,7 +43,7 @@ function loadMedia(data) {
   var json = data;
 
   // clear out any todo things
-  mediaInfo.innerText = "";
+  // mediaInfo.innerText = "";
 
   for (var key in json) {
     // skip loop if the property is from prototype
@@ -67,6 +67,8 @@ function loadMedia(data) {
 
       let progressBar = document.createElement("div");
 
+      let seekBar = document.createElement("input");
+
       name.innerText = audio.name;
       name.className = "leftInfo";
 
@@ -74,6 +76,13 @@ function loadMedia(data) {
       length.className = "rightInfo";
 
       progressBar.id = "progressBar";
+
+      seekBar.id = "seekBar";
+      seekBar.name = "seekBar"
+      seekBar.type = "range"
+      seekBar.min = "0";
+      seekBar.max = "100";
+      seekBar.value = "0";
 
       waveform.src = "/resources/media/Music/thumbs/" + audio.waveform;
       waveform.id = "waveformImg";
@@ -94,6 +103,7 @@ function loadMedia(data) {
       info.appendChild(name);
       info.appendChild(length);
       info.appendChild(progressBar);
+      // info.appendChild(seekBar);
       info.appendChild(waveform);
 
       info.className = "container";
@@ -119,7 +129,10 @@ async function waveformDisplay(consuming) {
   var timePercent = Math.round((parseInt(audioFile.currentTime) / parseInt(audioFile.duration)) * 100);
   let decimalPercent = (waveformImg.width * (parseInt(timePercent) / 100));
 
-  audioTime.innerText = timePercent + "%";
+  // audioTime.innerText = timePercent + "%";
+
+  // seekBar.value = timePercent;
+
   progressBar.style.left = decimalPercent + "px";
 
 }
