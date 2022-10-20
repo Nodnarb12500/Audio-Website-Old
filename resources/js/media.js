@@ -188,32 +188,51 @@ function waveformClick(e) {
 
 
 function prependChecks(a) {
+  // uncheck eerything
   one.className = "checkmark";
   two.className = "checkmark";
   three.className = "checkmark";
   four.className = "checkmark";
 
-  if (a == "1") {
-    one.className = "checkBefore";
+  document.getElementById("ratingBtn").value = "Rate";
 
-  } else if (a == "2") {
-    one.className = "checkBefore";
+  // Check what should get checked
+  switch(a) {
+    case 1:
+      // one.className = "checkBefore";
+    break;
 
-  } else if (a == "3") {
-    one.className = "checkBefore";
-    two.className = "checkBefore";
+    case 2:
+      one.className = "checkBefore";
+    break;
 
-  } else if (a == "4") {
-    one.className = "checkBefore";
-    two.className = "checkBefore";
-    three.className = "checkBefore";
+    case 3:
+      one.className = "checkBefore";
+      two.className = "checkBefore";
+    break;
 
-  } else if (a == "5") {
-    one.className = "checkBefore";
-    two.className = "checkBefore";
-    three.className = "checkBefore";
-    four.className = "checkBefore";
+    case 4:
+      one.className = "checkBefore";
+      two.className = "checkBefore";
+      three.className = "checkBefore";
+    break;
+
+    case 5:
+      one.className = "checkBefore";
+      two.className = "checkBefore";
+      three.className = "checkBefore";
+      four.className = "checkBefore";
+    break;
+
+    default:
+      alert("You Broke something somehow");
+    break;
   }
+
+  // add a listen event to the button so we can see it change when we click it
+  document.getElementById("ratingBtn").addEventListener("click", (e) => {
+    document.getElementById("ratingBtn").value = "Rated";
+  });
 }
 
 async function waveformDisplay(consuming) {
