@@ -98,6 +98,17 @@ function loadMedia(data) {
 
       waveform.addEventListener("click", waveformClick, false);
 
+      waveform.addEventListener("mousedown", (e) => {
+        // seek and play
+        console.log("middle click")
+        audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
+
+        if (document.getElementById("audioFile").paused) {
+          document.getElementById("audioFile").play();
+        }
+
+      });
+
       info.appendChild(name);
       info.appendChild(progressBar);
       info.appendChild(length);
@@ -133,56 +144,23 @@ function waveformClick(e) {
         pendingClick = 0;
     }
 
-    switch (e.detail) {
-      case 1:
-        pendingClick = setTimeout(function() {
-          /* single click options should be in here */
-
-          // debuggin
-          console.log("Single Click");
-
-          // Seek
-          audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
-
-        }, 150);// should match OS multi-click speed
-
-
-      break;
-      case 2:
-        pendingClick = setTimeout(() => {
-          console.log("Double Click");
-
-          // play/pause toggle
-          if (document.getElementById("audioFile").paused) {
-            document.getElementById("audioFile").play();
-          } else {
-            document.getElementById("audioFile").pause();
-          }
-
-        }, 150) // double click stuff
-
-
-      break;
-      case 3:
-        // Triple Click
-        console.log("Triple click")
-
-        // Seek
+  switch (e.detail) {
+    case 1:
+      pendingClick = setTimeout(function() {
         audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
-
-        // play/pause toggle
-        if (document.getElementById("audioFile").paused) {
-          document.getElementById("audioFile").play();
-        } else {
-          document.getElementById("audioFile").pause();
-        }
-
-        //debug
-        break;
-      default:
-        console.log('higher multi-click actions can be added as needed');
-      break;
-
+      }, 150);
+    break;
+    case 2:
+      // play/pause toggle
+      if (document.getElementById("audioFile").paused) {
+        document.getElementById("audioFile").play();
+      } else {
+        document.getElementById("audioFile").pause();
+      }
+    break;
+    default:
+      console.log('higher multi-click actions can be added as needed');
+    break;
     }
 }
 
