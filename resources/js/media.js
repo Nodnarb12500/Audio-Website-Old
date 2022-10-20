@@ -67,43 +67,49 @@ function loadMedia(data) {
 
       let progressBar = document.createElement("div");
 
-      let seekBar = document.createElement("input");
-
       name.innerText = audio.name;
       name.className = "leftInfo";
 
-      length.innerText = "Length: " + audio.length + "\nRating: " + audio.rating;
+      /* somehow convert the likes into stars out of 5 */
+      let starRating = "";
+
+      if (audio.rating != "-1") {
+        for (let i = parseInt(audio.rating); i != 0; i--) {
+          starRating = starRating.concat("&starf;");
+        };
+        /* fill in the rest of the stars with empty ones */
+        for (let i = 5 - parseInt(audio.rating); i != 0; i--) {
+          starRating = starRating.concat("&star;");
+        }
+
+      } else {
+        for (let i = 5; i != 0; i--) {
+          starRating = starRating.concat("&star;");
+        }
+      }
+
+      length.innerHTML = "Length: " + audio.length + "<br />Rating: " + starRating;
       length.className = "rightInfo";
 
       progressBar.id = "progressBar";
-
-      seekBar.id = "seekBar";
-      seekBar.name = "seekBar"
-      seekBar.type = "range"
-      seekBar.min = "0";
-      seekBar.max = "100";
-      seekBar.value = "0";
 
       waveform.src = "/resources/media/Music/thumbs/" + audio.waveform;
       waveform.id = "waveformImg";
 
       waveform.addEventListener("click", (e) => {
-
+        // Heres the play/pause toggle
         if (document.getElementById("audioFile").paused) {
           document.getElementById("audioFile").play();
-
         } else {
           document.getElementById("audioFile").pause();
-
         }
-        
+
+        console.log("X: " + e.offsetX + " Y: " + e.offsetY);
       });
 
-      
       info.appendChild(name);
       info.appendChild(length);
       info.appendChild(progressBar);
-      // info.appendChild(seekBar);
       info.appendChild(waveform);
 
       info.className = "container";
@@ -124,14 +130,40 @@ function loadMedia(data) {
   }
 }
 
+function prependChecks(a) {
+  one.className = "checkmark";
+  two.className = "checkmark";
+  three.className = "checkmark";
+  four.className = "checkmark";
+
+  if (a == "1") {
+    one.className = "checkBefore";
+
+  } else if (a == "2") {
+    one.className = "checkBefore";
+
+  } else if (a == "3") {
+    one.className = "checkBefore";
+    two.className = "checkBefore";
+
+  } else if (a == "4") {
+    one.className = "checkBefore";
+    two.className = "checkBefore";
+    three.className = "checkBefore";
+
+  } else if (a == "5") {
+    one.className = "checkBefore";
+    two.className = "checkBefore";
+    three.className = "checkBefore";
+    four.className = "checkBefore";
+  }
+}
+
 async function waveformDisplay(consuming) {
 
   var timePercent = Math.round((parseInt(audioFile.currentTime) / parseInt(audioFile.duration)) * 100);
   let decimalPercent = (waveformImg.width * (parseInt(timePercent) / 100));
 
-  // audioTime.innerText = timePercent + "%";
-
-  // seekBar.value = timePercent;
 
   progressBar.style.left = decimalPercent + "px";
 
