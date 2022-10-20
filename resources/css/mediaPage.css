@@ -15,7 +15,7 @@
 
 .container #progressBar {
     /* max-height: 320px; */
-    border: 2px solid steelblue;
+    border: 1px solid steelblue;
 
     position: absolute;
     top: 25px;
