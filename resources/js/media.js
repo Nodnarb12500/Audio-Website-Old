@@ -61,11 +61,10 @@ function loadMedia(data) {
       let name = document.createElement("p");
       let length = document.createElement("p");
 
+      let progressBar = document.createElement("div");
+
       let waveform = document.createElement("img");
       let audioFile = document.createElement("audio");
-
-
-      let progressBar = document.createElement("div");
 
       name.innerText = audio.name;
       name.className = "leftInfo";
@@ -93,12 +92,13 @@ function loadMedia(data) {
 
       progressBar.id = "progressBar";
 
-      waveform.src = "/resources/media/Music/thumbs/" + audio.waveform;
+      waveform.src = "/resources/media/thumbs/" + audio.waveform;
       waveform.id = "waveformImg";
+      waveform.draggable = false;
 
       waveform.addEventListener("click", (e) => {
         // debugging
-        console.log("X: " + e.offsetX + " Y: " + e.offsetY);
+        // console.log("X: " + e.offsetX + " Y: " + e.offsetY);
 
         // reserve some space for pausing and some space for seeking
         if (110 < e.offsetY && e.offsetY < 210) {
@@ -168,10 +168,12 @@ function prependChecks(a) {
 
 async function waveformDisplay(consuming) {
 
-  var timePercent = Math.round((parseInt(audioFile.currentTime) / parseInt(audioFile.duration)) * 100);
-  let decimalPercent = (waveformImg.width * (parseInt(timePercent) / 100));
+  // Debugging
+  // console.log(parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
 
+  var timePercent = (parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
+  let decimalPercent = (waveformImg.width * (parseFloat(timePercent)));
 
-  progressBar.style.left = decimalPercent + "px";
+  progressBar.style.left = (parseFloat(decimalPercent) - 2) + "px";
 
 }
