@@ -31,6 +31,14 @@
 .container img {
     width: 100%;
     border-radius: 15px;
+
+    /* stop a waveform from being dragable */
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .container .rightInfo {
@@ -40,20 +48,6 @@
     right: 10px;
     text-align: right;
 }
-
-/* input[type=range] { */
-/*     -webkit-appearance: none; */
-/*     background: rgba(0, 0, 0, 0); */
-/*     width: 640px; */
-
-/*     cursor: pointer; */
-/*     position: absolute; */
-
-/*     top: 25%; */
-/*     bottom: 25%; */
-/*     left: 0; */
-/*     right: 0; */
-/* } */
 
 .container .leftInfo {
     color: white;
