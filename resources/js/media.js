@@ -188,7 +188,7 @@ function waveformClick(e) {
 
 
 function prependChecks(a) {
-  // uncheck eerything
+  // uncheck everything
   one.className = "checkmark";
   two.className = "checkmark";
   three.className = "checkmark";
@@ -199,33 +199,27 @@ function prependChecks(a) {
   // Check what should get checked
   switch(a) {
     case 1:
-      // one.className = "checkBefore";
     break;
-
     case 2:
       one.className = "checkBefore";
     break;
-
     case 3:
       one.className = "checkBefore";
       two.className = "checkBefore";
     break;
-
     case 4:
       one.className = "checkBefore";
       two.className = "checkBefore";
       three.className = "checkBefore";
     break;
-
     case 5:
       one.className = "checkBefore";
       two.className = "checkBefore";
       three.className = "checkBefore";
       four.className = "checkBefore";
     break;
-
     default:
-      alert("You Broke something somehow");
+      alert("You broke something somehow");
     break;
   }
 
