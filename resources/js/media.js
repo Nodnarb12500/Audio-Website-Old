@@ -66,7 +66,18 @@ function loadMedia(data) {
       let waveform = document.createElement("img");
       let audioFile = document.createElement("audio");
 
-      name.innerText = audio.name;
+      let extraInfo = "";
+      if (audio.artist) {
+        console.log("artist found")
+        extraInfo = extraInfo.concat("<br>Artist: " + audio.artist);
+      }
+      if (audio.album) {
+        console.log("album found");
+        extraInfo = extraInfo.concat("<br>Album: " + audio.album);
+      }
+
+      name.innerHTML = "Name: " + audio.name + extraInfo;
+
       name.className = "leftInfo";
 
       /* somehow convert the likes into stars out of 5 */
@@ -98,8 +109,8 @@ function loadMedia(data) {
 
       waveform.addEventListener("mousedown", waveformClick, false);
 
-      info.appendChild(name);
       info.appendChild(progressBar);
+      info.appendChild(name);
       info.appendChild(length);
       info.appendChild(waveform);
 
