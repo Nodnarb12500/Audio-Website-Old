@@ -26,19 +26,21 @@ do
     # what iteration are we on?
     iteration=$((iteration + 1))
 
-    input="$i"
-    ext=".$(echo $input | cut -f 2- -d '.' | cut -f 2- -d '.')"
-    name=$(basename "$input" "$ext")
+    # input="$i"
+    fileName=$(basename -- "$i")
+    name="${fileName%.*}"
+    ext="${fileName##*.}"
+
     output="$name.png"
 
     # use ffprobe here to figure out the length of the audio file
-    length=$(ffprobe -i "$input" |& awk '/Duration/ {print $2}' | sed 's/00://;s/\..\{2\},//')
+    length=$(ffprobe -i "$i" |& awk '/Duration/ {print $2}' | sed 's/00://;s/\..\{2\},//')
 
     # Generate the Waveform
-    ffmpeg -i "$input" -f lavfi -i color=c=black:s=640x320 -filter_complex "[0:a]showwavespic=s=640x320:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output"
+    ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=640x320 -filter_complex "[0:a]showwavespic=s=640x320:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" # &> /dev/null
 
     # turn this into a curl POST request
-    curl -d "name=$name&fileName=$input&waveform=$output&length=$length&rating=-1" -X POST http://localhost:3000/upload/json
+    curl -d "name=$name&fileName=$i&waveform=$output&length=$length&rating=-1" -X POST http://localhost:3000/db/create
 
     echo "{\"name\": \"$name\", \"fileName\": \"$input\", \"waveform\": \"$output\", \"length\": \"$length\", \"rating\": \"-1\"}"
 
