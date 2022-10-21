@@ -67,7 +67,17 @@ function listAudio(data) {
       // let a = document.createElement("a");
       // a.href = "/db/get/" + audio.id;
 
-      name.innerText = audio.name;
+      let extraInfo = "";
+      if (audio.artist) {
+        console.log("artist found")
+        extraInfo = extraInfo.concat("<br />Artist: " + audio.artist);
+      }
+      if (audio.album) {
+        console.log("album found");
+        extraInfo = extraInfo.concat("<br />Album: " + audio.album);
+      }
+
+      name.innerHTML = "Name: " + audio.name + extraInfo;
       name.className = "left";
 
       let starRating = "";
