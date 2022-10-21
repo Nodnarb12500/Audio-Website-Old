@@ -35,33 +35,29 @@ do
 
     # use ffprobe here to figure out the length of the audio file
     length=$(ffprobe -i "$i" |& awk '/Duration/ {print $2}' | sed 's/00://;s/\..\{2\},//')
+    artist=$(ffprobe -i "$i" |& awk -F" " '/ artist / {$1=$2="";print $0}' | sed 's/^[[:space:]]*//')
+    # album=$(ffprobe -i "$i" |& awk -F" " '/ album / {$1=$2="";print $0}' | sed 's/^[[:space:]]*//')
+
+    if [["$artist" == ""]]
+    then
+        artist="fugma"
+    fi
 
     # Generate the Waveform
     ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=640x320 -filter_complex "[0:a]showwavespic=s=640x320:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" &> /dev/null
 
-    # Escape symbols so that the database doesnt crash or input incorrect information
-    # input=$(echo "$i" | sed 's/&/\\&/;s/+/\\+/')
-    # name=$(echo "$name" | sed 's/&/\\&/;s/+/\\+/')
-    # output=$(echo "$output" | sed 's/&/\\&/;s/+/\\+/')
-
-    # turn this into a curl POST request
-    # curl -d name="$name" \
-    #     -d fileName="$i" \
-    #     -d waveform="$output" \
-    #     -d length="$length" \
-    #     -d rating=-1 \
-    #     -X POST http://localhost:3000/db/create
-
-    # allows uploading names with symbols?
-
+    # Upload the data to the Server
+    # -urlencode allows symbols to be uploaded to without crashing the database
+        # --data-urlencode album="$album" \
     curl --data-urlencode name="$name" \
         --data-urlencode fileName="$i" \
         --data-urlencode waveform="$output" \
+        --data-urlencode artist="$artist" \
         --data-urlencode length="$length" \
         --data-urlencode rating=-1 \
         -X POST http://localhost:3000/db/create
 
-    echo "{\"name\": \"$name\", \"fileName\": \"$input\", \"waveform\": \"$output\", \"length\": \"$length\", \"rating\": \"-1\"}"
+    echo "{\"name\": \"$name\", \"artist\": \"$artist\", \"fileName\": \"$input\", \"waveform\": \"$output\", \"length\": \"$length\", \"rating\": \"-1\"}"
 
 done
 exit
