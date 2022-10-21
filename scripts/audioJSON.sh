@@ -37,10 +37,29 @@ do
     length=$(ffprobe -i "$i" |& awk '/Duration/ {print $2}' | sed 's/00://;s/\..\{2\},//')
 
     # Generate the Waveform
-    ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=640x320 -filter_complex "[0:a]showwavespic=s=640x320:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" # &> /dev/null
+    ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=640x320 -filter_complex "[0:a]showwavespic=s=640x320:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" &> /dev/null
+
+    # Escape symbols so that the database doesnt crash or input incorrect information
+    # input=$(echo "$i" | sed 's/&/\\&/;s/+/\\+/')
+    # name=$(echo "$name" | sed 's/&/\\&/;s/+/\\+/')
+    # output=$(echo "$output" | sed 's/&/\\&/;s/+/\\+/')
 
     # turn this into a curl POST request
-    curl -d "name=$name&fileName=$i&waveform=$output&length=$length&rating=-1" -X POST http://localhost:3000/db/create
+    # curl -d name="$name" \
+    #     -d fileName="$i" \
+    #     -d waveform="$output" \
+    #     -d length="$length" \
+    #     -d rating=-1 \
+    #     -X POST http://localhost:3000/db/create
+
+    # allows uploading names with symbols?
+
+    curl --data-urlencode name="$name" \
+        --data-urlencode fileName="$i" \
+        --data-urlencode waveform="$output" \
+        --data-urlencode length="$length" \
+        --data-urlencode rating=-1 \
+        -X POST http://localhost:3000/db/create
 
     echo "{\"name\": \"$name\", \"fileName\": \"$input\", \"waveform\": \"$output\", \"length\": \"$length\", \"rating\": \"-1\"}"
 
