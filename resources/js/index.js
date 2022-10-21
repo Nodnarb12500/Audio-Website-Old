@@ -57,7 +57,7 @@ function listAudio(data) {
         if (!obj.hasOwnProperty(prop)) continue;
 
       /* Object prop is what i wanted i can now start using the ojects to create html */
-      let audios = JSON.parse(JSON.stringify(obj[prop]));
+      let audio = JSON.parse(JSON.stringify(obj[prop]));
 
       /* Main shit */
       let row = document.createElement("div");
@@ -65,18 +65,18 @@ function listAudio(data) {
       let length = document.createElement("p");
 
       // let a = document.createElement("a");
-      // a.href = "/db/get/" + audios.id;
+      // a.href = "/db/get/" + audio.id;
 
-      name.innerText = audios.name;
+      name.innerText = audio.name;
       name.className = "left";
 
       let starRating = "";
-      if (audios.rating != "-1") {
-        for (let i = parseInt(audios.rating); i != 0; i--) {
+      if (audio.rating != "-1") {
+        for (let i = parseInt(audio.rating); i != 0; i--) {
           starRating = starRating.concat("&starf;");
         };
         /* fill in the rest of the stars with empty ones */
-        for (let i = 5 - parseInt(audios.rating); i != 0; i--) {
+        for (let i = 5 - parseInt(audio.rating); i != 0; i--) {
           starRating = starRating.concat("&star;");
         }
 
@@ -86,7 +86,7 @@ function listAudio(data) {
         }
       }
 
-      length.innerHTML = "Length: " + audios.length + "<br />Rating: " + starRating;
+      length.innerHTML = "Length: " + audio.length + "<br />Rating: " + starRating;
       length.className = "right";
 
       /* make onclick event to go to manga/id */
@@ -94,13 +94,13 @@ function listAudio(data) {
       row.appendChild(name);
       row.appendChild(length);
 
-      let imgPath = "/resources/media/thumbs/" + audios.waveform;
+      let imgPath = "/resources/media/thumbs/" + audio.waveform;
       row.style.backgroundImage = `url(\"` + imgPath + `\")`;
 
       // row.appendChild(a);
       row.className = "item";
       row.addEventListener("click", (e) => {
-        window.open(url[0] + "//" + url[2] + "/audio/" + audios.id);
+        window.open(url[0] + "//" + url[2] + "/audio/" + audio.id);
       })
       audioList.appendChild(row);
     }
