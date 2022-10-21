@@ -211,10 +211,6 @@ function prependChecks(a) {
 }
 
 async function waveformDisplay(consuming) {
-
-  // Debugging
-  // console.log(parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
-
   var timePercent = (parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
   let decimalPercent = (waveformImg.width * (parseFloat(timePercent)));
 
