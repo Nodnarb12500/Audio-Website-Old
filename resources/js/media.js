@@ -138,6 +138,10 @@ function loadInfo(audio) {
 
   /* set the POST url for the rating form */
   ratingForm.action = "/db/modify/" + audio.id;
+
+  /* set window title to the current Song */
+  document.title = audio.name;
+
 }
 
 
