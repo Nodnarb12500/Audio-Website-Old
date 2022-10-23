@@ -24,6 +24,9 @@ function load(path, page) {
 
   if (path == "") {
     path = "all";
+    document.title = "Search: Everything";
+  } else {
+    document.title = "Search: " + path;
   }
 
   let search = url[0] + "//" + url[2] + "/db/search/" + path + "/" + page;
