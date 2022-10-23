@@ -166,7 +166,7 @@ function waveformClick(e) {
           audioFile.currentTime = (offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
           console.log(offsetX);
           console.log((offsetX / document.getElementById("waveformImg").width) * audioFile.duration);
-        }, 150);
+        }, 200);
       break;
       case 2:
         console.log("Double Click");
