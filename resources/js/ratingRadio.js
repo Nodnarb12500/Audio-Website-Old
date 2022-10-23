@@ -33,4 +33,11 @@ function prependChecks(a) {
   document.getElementById("ratingBtn").addEventListener("click", (e) => {
     document.getElementById("ratingBtn").value = "Rated";
   });
+
+  // test();
+}
+
+function test() {
+  // this is to test modules if i ever get that working
+  console.log("the test worked, this is not an exported function");
 }
