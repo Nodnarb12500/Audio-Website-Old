@@ -64,10 +64,10 @@ function loadMedia(data) {
 
 function loadInfo(audio) {
   /* shit here adds information to the mediaInfo Div */
-  let info = document.createElement("div")
+  let info = document.createElement("div");
   let name = document.createElement("p");
   let length = document.createElement("p");
-
+  let volume = document.createElement("p");
   let progressBar = document.createElement("div");
 
   let waveform = document.createElement("img");
@@ -84,8 +84,7 @@ function loadInfo(audio) {
   }
 
   name.innerHTML = "Name: " + audio.name + extraInfo;
-
-  name.className = "leftInfo";
+  name.id = "topLeft";
 
   /* somehow convert the likes into stars out of 5 */
   let starRating = "";
@@ -106,7 +105,19 @@ function loadInfo(audio) {
   }
 
   length.innerHTML = "Length: " + audio.length + "<br />Rating: " + starRating;
-  length.className = "rightInfo";
+  length.id = "bottomRight";
+
+  volume.id = "bottomLeft";
+  volume.addEventListener("click", (e) => {
+
+    if (audioFile.muted) {
+      audioFile.muted = false;
+    } else {
+      audioFile.muted = true
+    }
+    waveformDisplay();
+  }, false);
+
 
   progressBar.id = "progressBar";
 
@@ -120,6 +131,7 @@ function loadInfo(audio) {
   info.appendChild(progressBar);
   info.appendChild(name);
   info.appendChild(length);
+  info.appendChild(volume);
   info.appendChild(waveform);
 
   info.className = "container";
@@ -261,9 +273,41 @@ function prependChecks(a) {
 }
 
 async function waveformDisplay(consuming) {
+
+  let volume = document.getElementById("bottomLeft");
+
   var timePercent = (parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
   let decimalPercent = (waveformImg.width * (parseFloat(timePercent)));
 
   progressBar.style.left = (parseFloat(decimalPercent) - 3) + "px";
 
+  // let currentTime = Math.floor(audioFile.currentTime / 60) + ":" + parseInt(audioFile.currentTime % 60);
+  let currentTime = secondsToTime(audioFile.currentTime);
+
+  let currentVolume;
+
+  if (audioFile.muted) {
+    currentVolume = "Muted!";
+  } else {
+    currentVolume = Math.round(parseFloat(audioFile.volume) * 100) + "%";
+  }
+
+  if (audioFile.paused) {
+    volume.innerHTML = "(paused) " + currentTime + "<br />Volume: " + currentVolume;
+
+  } else {
+    volume.innerHTML = currentTime + "<br />Volume: " + currentVolume;
+
+  }
+
+}
+
+function secondsToTime(e){
+    const /*h = Math.floor(e / 3600).toString().padStart(2,'0'),*/
+          m = Math.floor(e % 3600 / 60).toString().padStart(2,'0'),
+          s = Math.floor(e % 60).toString().padStart(2,'0');
+
+    // return h + ':' + m + ':' + s;
+    return m + ':' + s;
+    //return `${h}:${m}:${s}`;
 }

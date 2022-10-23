@@ -44,15 +44,21 @@
     position: unset;
 }
 
+.container #topLeft {
+    top: 5px;
+    left: 15px;
+    text-align: left;
+}
+
 .container #bottomRight {
     bottom: 5px;
     right: 10px;
     text-align: right;
 }
 
-.container #topLeft {
-    top: 5px;
-    left: 15px;
+.container #bottomLeft {
+    bottom: 5px;
+    left: 10px;
     text-align: left;
 }
 
