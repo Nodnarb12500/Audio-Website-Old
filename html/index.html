@@ -10,8 +10,13 @@
         <link rel="stylesheet" href="/resources/css/main.css" type="text/css" media="screen"/>
         <link rel="stylesheet" href="/resources/css/pages.css" type="text/css" media="screen"/>
 
+
+        <script type="text/javascript" src="/resources/js/getRequest.js"></script>
+        <script type="text/javascript" src="/resources/js/search.js"></script>
+        <script type="text/javascript" src="/resources/js/pagination.js"></script>
+
     </head>
-    <body onload="load(searchbar.value, 1)">
+    <body onload="search(searchbar.value, 1);">
         <div id="site-box" class="center">
 
             <div id="title" class="contentItem">
@@ -23,7 +28,7 @@
 
             <div id="searchBox" class="contentItem">
                 <input type="text" placeholder="Search by name, artist or album" name="search" id="searchbar">
-                <button type="submit" id="searchButton" onclick="load(searchbar.value, 1)">&#128269;</button>
+                <button type="submit" id="searchButton" onclick="search(searchbar.value, 1)">&#128269;</button>
 
                 <script type="text/javascript">
                  searchbar.addEventListener("keypress", (e) => {
@@ -59,7 +64,7 @@
 
                 <div id="gotoBox">
                     <input type="number" name="gotoBar" id="gotoBar" value="" />
-                    <button id="gotoBtn" onclick="load(searchbar.value, parseInt(gotoBar.value))"></button>
+                    <button id="gotoBtn" onclick="search(searchbar.value, parseInt(gotoBar.value))"></button>
 
                     <script type="text/javascript">
                      gotoBar.addEventListener("keypress", (e) => {
@@ -74,7 +79,6 @@
 
             </div> <!-- pagination -->
 
-            <script type="text/javascript" src="/resources/js/index.js"></script>
         </div> <!-- site-box -->
     </body>
 </html>
