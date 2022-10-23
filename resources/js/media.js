@@ -135,6 +135,7 @@ function loadInfo(audio) {
   info.appendChild(waveform);
 
   info.className = "container";
+  info.id = "waveformPlayer";
 
   mediaInfo.appendChild(info);
 
@@ -145,6 +146,10 @@ function loadInfo(audio) {
   audioFile.ontimeupdate = function() {
     waveformDisplay();
   }
+  /*audioFile.onpause = function() {
+    // maybe only do this after some amount of time?
+    makeIcon();
+  }*/
 
   audioPlayer.appendChild(audioFile);
 
@@ -153,6 +158,10 @@ function loadInfo(audio) {
 
   /* set window title to the current Song */
   document.title = audio.name;
+
+
+  /* run extra stuff */
+  makeIcon();
 
 }
 
@@ -310,4 +319,30 @@ function secondsToTime(e){
     // return h + ':' + m + ':' + s;
     return m + ':' + s;
     //return `${h}:${m}:${s}`;
+}
+
+/* auto run this function on opening the page */
+function makeIcon() {
+  // pause icon to overlay on the waveform
+
+  if (!document.getElementById("playIcon")) {
+    // make the thing
+    let playIcon = document.createElement("img");
+    let waveformPlayer = document.getElementById("waveformPlayer");
+
+    playIcon.src = "/resources/media/icon/playbutton.svg";
+    playIcon.id = "playIcon";
+
+    playIcon.addEventListener("click", (e) => {
+      // on single click unpause audio, and hide button.
+      document.getElementById("audioFile").play();
+      playIcon.style.display = "none";
+    }, false)
+
+    waveformPlayer.appendChild(playIcon);
+
+  } else {
+    document.getElementById("playIcon").style.display = "block";
+
+  }
 }
