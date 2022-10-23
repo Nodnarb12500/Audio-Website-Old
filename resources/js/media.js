@@ -161,7 +161,6 @@ function loadInfo(audio) {
 
 }
 
-
 /* Variables */
 var pendingClick;
 
@@ -180,7 +179,6 @@ function waveformClick(e) {
       case 1:
         pendingClick = setTimeout(function() {
           audioFile.currentTime = (offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
-          console.log((offsetX / document.getElementById("waveformImg").width) * audioFile.duration);
         }, 200);
       break;
       case 2:
@@ -205,9 +203,7 @@ function waveformClick(e) {
 
 /* Scroll wheel */
 function scrollWheel(e) {
-
   e.preventDefault();
-
   let currentVolume = document.getElementById("audioFile").volume;
 
   if (event.deltaY < 0) {
