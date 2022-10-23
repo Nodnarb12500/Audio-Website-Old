@@ -31,7 +31,8 @@ function getTwentyFive(search, page) {
     return knex("audios").select('*').limit(25).offset(n);
 
   } else {
-    return knex("audios").whereLike("name", "\%" + search + "\%").limit(25).offset(n);
+    return knex("audios")
+      .whereLike("search", "\%" + search + "\%").limit(25).offset(n);
 
   }
 }
