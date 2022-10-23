@@ -72,11 +72,9 @@ function listAudio(data) {
 
       let extraInfo = "";
       if (audio.artist) {
-        console.log("artist found")
         extraInfo = extraInfo.concat("<br />Artist: " + audio.artist);
       }
       if (audio.album) {
-        console.log("album found");
         extraInfo = extraInfo.concat("<br />Album: " + audio.album);
       }
 
