@@ -13,7 +13,6 @@
     background-color: steelblue;
     padding-right: 3px;
 
-    position: absolute;
     top: 40px;
     bottom: 40px;
     left: -3px;
@@ -33,26 +32,25 @@
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+
+    color: white;
+    background-color: rgba(0, 0, 0, .4);
+    position: absolute;
 }
 
 .container img {
     width: 100%;
     border-radius: 15px;
+    position: unset;
 }
 
-.container .rightInfo {
-    color: white;
-    background-color: rgba(0, 0, 0, .4);
-    position: absolute;
+.container #bottomRight {
     bottom: 5px;
     right: 10px;
     text-align: right;
 }
 
-.container .leftInfo {
-    color: white;
-    background-color: rgba(0, 0, 0, .4);
-    position: absolute;
+.container #topLeft {
     top: 5px;
     left: 15px;
     text-align: left;
