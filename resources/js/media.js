@@ -104,7 +104,7 @@ function loadInfo(audio) {
     }
   }
 
-  length.innerHTML = "Length: " + audio.length + "<br />Rating: " + starRating;
+  length.innerHTML = "Length: " + audio.length + "<br>Rating: " + starRating;
   length.id = "bottomRight";
 
   volume.id = "bottomLeft";
@@ -183,14 +183,11 @@ function waveformClick(e) {
     switch (e.detail) {
       case 1:
         pendingClick = setTimeout(function() {
-          console.log("Single Click");
           audioFile.currentTime = (offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
-          console.log(offsetX);
           console.log((offsetX / document.getElementById("waveformImg").width) * audioFile.duration);
         }, 200);
       break;
       case 2:
-        console.log("Double Click");
         // play/pause toggle
         if (document.getElementById("audioFile").paused) {
           document.getElementById("audioFile").play();
@@ -198,26 +195,22 @@ function waveformClick(e) {
           document.getElementById("audioFile").pause();
         }
       break;
-      default:
-        console.log('higher multi-click actions can be added as needed');
-      break;
     }
   } else if (e.button == 1) {
     e.preventDefault();
-    console.log("middle click");
     audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
-    console.log((e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration);
-
     if (document.getElementById("audioFile").paused) {
+      /* play the file if it isnt already */
       document.getElementById("audioFile").play();
     }
   } else if (e.button == 2) {
-    console.log("rightclick");
   }
 }
 
 /* Scroll wheel */
 function scrollWheel(e) {
+
+  e.preventDefault();
 
   let currentVolume = document.getElementById("audioFile").volume;
 
@@ -240,9 +233,6 @@ function scrollWheel(e) {
     }
 
   }
-
-  console.log(currentVolume);
-
 }
 
 function prependChecks(a) {
