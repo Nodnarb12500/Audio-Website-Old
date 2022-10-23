@@ -14,10 +14,6 @@ var getJSON = function(url, callback) {
     xhr.send();
 };
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 function getMedia() {
   /* Ask the server for the manga Data */
   const url = window.location.href.split('/');
@@ -229,46 +225,9 @@ function scrollWheel(e) {
       // Stop execution when volume is down
     } else {
       document.getElementById("audioFile").volume = currentVolume - 0.05;
-
     }
 
   }
-}
-
-function prependChecks(a) {
-  // uncheck everything
-  one.className = "checkmark";
-  two.className = "checkmark";
-  three.className = "checkmark";
-  four.className = "checkmark";
-  document.getElementById("ratingBtn").value = "Rate";
-
-  // Check what should get checked
-  switch(a) {
-    case 2:
-      one.className = "checkBefore";
-    break;
-    case 3:
-      one.className = "checkBefore";
-      two.className = "checkBefore";
-    break;
-    case 4:
-      one.className = "checkBefore";
-      two.className = "checkBefore";
-      three.className = "checkBefore";
-    break;
-    case 5:
-      one.className = "checkBefore";
-      two.className = "checkBefore";
-      three.className = "checkBefore";
-      four.className = "checkBefore";
-    break;
-  }
-
-  // add a listen event to the button so we can see it change when we click it
-  document.getElementById("ratingBtn").addEventListener("click", (e) => {
-    document.getElementById("ratingBtn").value = "Rated";
-  });
 }
 
 async function waveformDisplay(consuming) {
