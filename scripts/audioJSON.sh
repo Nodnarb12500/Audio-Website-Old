@@ -36,23 +36,21 @@ do
     # use ffprobe here to figure out the length of the audio file
     length=$(ffprobe -i "$i" |& awk '/Duration/ {print $2}' | sed 's/00://;s/\..\{2\},//')
     artist=$(ffprobe -i "$i" |& awk -F" " '/ artist / {$1=$2="";print $0}' | sed 's/^[[:space:]]*//')
-    # album=$(ffprobe -i "$i" |& awk -F" " '/ album / {$1=$2="";print $0}' | sed 's/^[[:space:]]*//')
+    album=$(ffprobe -i "$i" |& awk -F" " '/ album / {$1=$2="";print $0}' | sed 's/^[[:space:]]*//')
 
-    if [["$artist" == ""]]
-    then
-        artist="fugma"
-    fi
+    search="$name $artist $album"
 
     # Generate the Waveform
     ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=640x320 -filter_complex "[0:a]showwavespic=s=640x320:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" &> /dev/null
 
     # Upload the data to the Server
     # -urlencode allows symbols to be uploaded to without crashing the database
-        # --data-urlencode album="$album" \
     curl --data-urlencode name="$name" \
         --data-urlencode fileName="$i" \
         --data-urlencode waveform="$output" \
         --data-urlencode artist="$artist" \
+        --data-urlencode album="$album" \
+        --data-urlencode search="$search" \
         --data-urlencode length="$length" \
         --data-urlencode rating=-1 \
         -X POST http://localhost:3000/db/create
