@@ -51,12 +51,12 @@ app.get("/", (req, res) => {
   res.sendFile('html/index.html', {root: __dirname});
 });
 
+app.get("/audio/playlist", (req, res) => {
+  res.sendFile('html/playlist.html', {root: __dirname});
+});
+
 app.get("/audio/:id", (req, res) => {
   res.sendFile('html/media.html', {root: __dirname});
 });
-
-app.get("/audio/playlist", (req, res) => {
-  res.sendFile('html/playlist.html', {root: __dirname});
-})
 
 app.listen(3000, () => console.log("server is listening on port 3069"));
