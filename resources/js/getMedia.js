@@ -7,6 +7,9 @@ function getMedia() {
   searchMedia(search, 2);
 }
 
+/* get the search.js file to have the results in it as well */
+/* thing of a better way to do this so that all pages can use the function below universally */
+
 function loadMedia(data) {
   console.log(data);
   /* Parse data from server and loop though it */
