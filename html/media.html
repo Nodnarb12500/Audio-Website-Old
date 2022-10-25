@@ -3,21 +3,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <!-- <title>Audio Player</title> -->
-        <meta name="description" content="">
+        <meta name="description" content="Audio Player">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="/resources/css/main.css" type="text/css" media="screen"/>
-        <link rel="stylesheet" href="/resources/css/mediaPage.css" type="text/css" media="screen"/>
-
-        <!-- <script type="module" src="/resources/js/ratingRadio.js"></script>
-             <script type="module" src="/resources/js/media.js"></script> -->
+        <link rel="stylesheet" href="/resources/css/waveformPlayer.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="/resources/css/ratingRadio.css" type="text/css" media="screen" />
 
         <script type="text/javascript" src="/resources/js/getRequest.js"></script>
         <script type="text/javascript" src="/resources/js/getMedia.js"></script>
         <script type="text/javascript" src="/resources/js/waveformPlayer.js"></script>
         <script type="text/javascript" src="/resources/js/ratingRadio.js"></script>
-
 
     </head>
     <body onload="getMedia();">
@@ -59,11 +55,10 @@
                         <input type="radio" name="rating" value="5" />
                         <span id="five" class="checkmark" onclick="prependChecks(5)"></span>
                     </label>
-                    <input id="ratingBtn" type="submit" value="Rate" />
+                    <input id="ratingBtn" type="submit" value="Rate" class="button" />
                 </form>
             </div> <!-- ratingBox -->
 
         </div> <!-- site-box -->
-
     </body>
 </html>
