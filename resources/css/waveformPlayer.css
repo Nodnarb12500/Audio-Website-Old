@@ -6,7 +6,6 @@
 
 .container #playIcon {
     background: unset;
-    /* background: white; */
 
     max-width: 256px;
     width: 100%;
@@ -16,7 +15,6 @@
 }
 
 .container #progressBar {
-    /* max-height: 320px; */
     background-color: steelblue;
     padding-right: 3px;
 
@@ -35,6 +33,7 @@
 }
 
 .container br {
+    /* firefox will "ignore" br tags without this */
     position: unset;
 }
 

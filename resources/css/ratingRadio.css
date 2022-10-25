@@ -1,0 +1,26 @@
+
+/* The extremely annoying to make checkboxes */
+.StarContainer {
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+    font-size: 45px;
+}
+
+.StarContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark:after {
+    content: '\2606';
+}
+
+.StarContainer input:checked ~ .checkmark:after {
+    content: '\2605';
+}
+
+.checkBefore:after {
+    content: "\2605";
+}

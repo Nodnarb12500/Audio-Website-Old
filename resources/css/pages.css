@@ -66,10 +66,6 @@ input[type=number] {
     border: 2px solid var(--curr-border);
     border-radius: 15px;
 
-    /* overflow: hidden; */
-    /* word-break: break-word; */
-
-    /* cursor: pointer; */
 
     position: relative;
 

@@ -1,42 +1,36 @@
 
-/* Color scheme shit */
 :root {
-	/* Currently used Variables */
-	--curr-button: #2196F3;
+	--curr-button: #2196f3;
 	--curr-buttonHover: #0b7dda;
-	--curr-buttonText: white;
+	--curr-buttonText: #fff;
 	--curr-searchbarBg: #f1f1f1;
 
 }
 
 @media(prefers-color-scheme: dark) {
 	:root {
-		/* darkBackground */
 		--curr-bg: #1f1d20;
 		--curr-box: #1f1d20;
-		--curr-border: whitesmoke;
-		--curr-text: white;
-		--curr-link: darkgrey;
+		--curr-border: #f5f5f5;
+		--curr-text: #fff;
+		--curr-link: #a9a9a9;
 
 	}
 }
 
-
 @media(prefers-color-scheme: light) {
 	:root {
-		/* lightBackground */
-		--curr-bg: white;
-		--curr-border: black;
-		--curr-box: whitesmoke;
-		--curr-text: black;
+		--curr-bg: #fff;
+		--curr-border: #000;
+		--curr-box: #f5f5f5;
+		--curr-text: #000;
 		--curr-link: unset;
 
 	}
 }
 
-/* General Page Shit */
 body {
-	background-color: var(--curr-bg);
+	background: var(--curr-bg);
 	color: var(--curr-text);
 }
 
@@ -62,7 +56,10 @@ hr {
 	text-align: -moz-center;
     text-align: -webkit-center;
 	margin: auto;
+}
 
+.button {
+    margin: 10px;
 }
 
 .hidden {
