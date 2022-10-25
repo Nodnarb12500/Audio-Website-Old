@@ -1,5 +1,4 @@
 
-/* General Page Shit */
 #mediaInfo * {
     margin: 3px;
 }
@@ -24,7 +23,7 @@
 }
 
 .container {
-    max-width: 640px;
+    max-width: 950px;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -38,7 +37,6 @@
 }
 
 .container * {
-    /* stop a waveform from being dragable */
     user-drag: none;
     -webkit-user-drag: none;
 

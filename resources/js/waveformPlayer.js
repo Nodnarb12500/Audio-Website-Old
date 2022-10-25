@@ -121,7 +121,6 @@ function waveformClick(e) {
         }, 200);
       break;
       case 2:
-        // play/pause toggle
         if (document.getElementById("audioFile").paused) {
           document.getElementById("audioFile").play();
         } else {
@@ -133,7 +132,6 @@ function waveformClick(e) {
     e.preventDefault();
     audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
     if (document.getElementById("audioFile").paused) {
-      /* play the file if it isnt already */
       document.getElementById("audioFile").play();
     }
   } else if (e.button == 2) {
@@ -168,15 +166,13 @@ function scrollWheel(e) {
 function waveformDisplay(consuming) {
 
   let volume = document.getElementById("bottomLeft");
-
-  var timePercent = (parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
+  let timePercent = (parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
   let decimalPercent = (waveformImg.width * (parseFloat(timePercent)));
 
-  progressBar.style.left = (parseFloat(decimalPercent) - 3) + "px";
+  // progressBar.style.left = (parseFloat(decimalPercent) - 3) + "px";
+  progressBar.style.left = parseFloat(decimalPercent) + "px";
 
-  // let currentTime = Math.floor(audioFile.currentTime / 60) + ":" + parseInt(audioFile.currentTime % 60);
   let currentTime = secondsToTime(audioFile.currentTime);
-
   let currentVolume;
 
   if (audioFile.muted) {
