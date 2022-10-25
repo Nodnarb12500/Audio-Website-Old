@@ -4,40 +4,81 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Playlists</title>
-        <meta name="description" content="">
+        <meta name="description" content="playlists page for the audio site">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="/resources/css/main.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/resources/css/mediaPage.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/resources/css/playlist.css" type="text/css" media="screen" />
 
     </head>
     <body>
-
         <div id="site-box" class="center">
             <div id="title" class="contentItem">
-
-            </div> <!-- title -->
-
+                <h1>Audio Player</h1>
+            </div>
             <hr />
 
-            <div id="viewPort" class="left">
-                <!-- left side where the audio/searching is -->
-            </div> <!-- viewPort -->
+            <div id="playlistBox">
+                <div id="leftSide">
+                    <div id="mediaInfo" class="contentItem leftSide">
+                        <div class="container" id="waveformPlayer">
+                            <div id="progressBar"></div>
+                            <p id="topLeft">Name: 07-High Voltage (2000 Reprise)</p>
+                            <p id="bottomRight">Length: 03:45<br>Rating: ☆☆☆☆☆</p>
+                            <p id="bottomLeft">03:18<br>Volume: 100%</p>
+                            <img src="/resources/media/thumbs/07-High Voltage (2000 Reprise).png" id="waveformImg" draggable="false">
+                            <img src="/resources/media/icon/playbutton.svg" id="playIcon">
+                        </div>
+                    </div>
+                    <div id="description">
+                        <!-- the items arent clickable or select able
+                             so this area should be used for grabbing the data so that users can select/use it -->
+                        <p>Name: 07-High Voltage (2000 Reprise)</p>
+                        <p>Artist: Linkin Park</p>
+                        <p>Album: EPs</p>
+                    </div>
+                </div>
 
-            <div id=rightSide>
+                <div id="rightSide">
+                    <div id="playlistTitle">
+                        <h2>Playlist</h2>
+                    </div>
+                    <div id="playlist" class="contentItem">
+                        <!-- top right where the play list is -->
+                        <div class="playlistItem">
+                            <img src="/resources/media/thumbs/Dust Code.png" alt="" />
+                            <p>name: Dust Code<br />
+                                artist: mike shinoda<br />
+                                album: Covid streams</p>
+                        </div>
+                        <div class="playlistItem">
+                            <img src="/resources/media/thumbs/Dust Code.png" alt="" />
+                            <p>name: Dust Code<br />
+                                artist: mike shinoda<br />
+                                album: Covid streams</p>
+                        </div>
+                        <div class="playlistItem">
+                            <img src="/resources/media/thumbs/Dust Code.png" alt="" />
+                            <p>name: Dust Code<br />
+                                artist: mike shinoda<br />
+                                album: Covid streams</p>
+                        </div>
+                        <div class="playlistItem">
+                            <img src="/resources/media/thumbs/Dust Code.png" alt="" />
+                            <p>name: Dust Code<br />
+                                artist: mike shinoda<br />
+                                album: Covid streams</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div id="suggestionsTitle">
+                        <h2>Related</h2>
+                    </div>
+                    <div id="suggestions" class="contentItem playlistItem"></div>
 
-                <div id="playlist" class="contentItem">
-                    <!-- top right where the play list is -->
-                </div> <!-- playlist -->
-
-                <hr />
-
-                <div id="suggestions" class="contentItem">
-                    <!-- bottom left where the suggestions live -->
-                </div> <!-- suggestions -->
-
-            </div> <!-- rightSide -->
-
+                </div> <!-- rightSide -->
+            </div> <!-- playlistBox -->
         </div> <!-- site-box -->
-
     </body>
 </html>

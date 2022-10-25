@@ -6,13 +6,16 @@ function getMedia() {
   searchMedia(search, 2);
 }
 
+function getPlaylistItem(a) {
+
+  url = window.location.href.split('/');
+  let search = url[0] + url[1] + url[2] + "/db/get/" + play_list[a];
+
+}
+
 function loadMedia(data) {
-  console.log(data);
   /* Parse data from server and loop though it */
-  // turn the json array into HTML
   var json = data;
-  // clear out any todo things
-  // mediaInfo.innerText = "";
 
   for (var key in json) {
     // skip loop if the property is from prototype
