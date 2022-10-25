@@ -41,7 +41,9 @@ do
     search="$name $artist $album"
 
     # Generate the Waveform
-    ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=640x320 -filter_complex "[0:a]showwavespic=s=640x320:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" &> /dev/null
+    res="1280x720" # change me for different resolution
+    # ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=640x320 -filter_complex "[0:a]showwavespic=s=640x320:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" &> /dev/null
+    ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=$res -filter_complex "[0:a]showwavespic=s=$res:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" &> /dev/null
 
     # Upload the data to the Server
     # -urlencode allows symbols to be uploaded to without crashing the database
