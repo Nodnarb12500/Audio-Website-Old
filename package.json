@@ -1,5 +1,5 @@
 {
-  "name": "rest-api_template",
+  "name": "Audio Website",
   "version": "1.0.0",
   "description": "REST-Template",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.nodnarb12500.tk/nodnarb12500/REST-API_Template"
+    "url": "https://git.nodnarb12500.tk/nodnarb12500/Audio-Website"
   },
   "keywords": [
     "nodejs",
