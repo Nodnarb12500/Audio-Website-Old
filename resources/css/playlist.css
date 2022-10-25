@@ -17,10 +17,10 @@ h2 {
 
 #description {
     text-align: left;
+    margin-left: 50px;
 }
 
 #rightSide {
-    /* float: right; */
     text-align: left;
     flex: 40%;
 }
@@ -38,12 +38,11 @@ h2 {
     border-radius: 15px;
 
     max-height: 64px;
-
     margin: 3px;
 }
 
 .playlistItem p {
-    margin: 5px 0 5px 0;
+    margin: 5px 0;
 }
 
 .playlistItem img {
@@ -63,20 +62,13 @@ h2 {
     }
 
     #rightSide {
-        text-align: left;
         width: 100%;
-        flex: 100%;
     }
 
     h2 {
         text-align: center; !important
     }
-
-    #leftSide {
-        flex: 100%;
-    }
 }
-
 @media (max-width: 350px) {
     .playlistItem {
         max-height: unset;
