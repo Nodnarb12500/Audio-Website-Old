@@ -31,7 +31,11 @@ do
     name="${fileName%.*}"
     ext="${fileName##*.}"
 
-    output="$name.png"
+    # switch the output name to change what image format you want
+    # output="$name.png"
+    output="$name.avif"
+    # output="$name.jpg"
+    # output="$name.webp"
 
     # use ffprobe here to figure out the length of the audio file
     length=$(ffprobe -i "$i" |& awk '/Duration/ {print $2}' | sed 's/00://;s/\..\{2\},//')

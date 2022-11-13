@@ -24,12 +24,13 @@ function searchMedia(search, a) {
 
     } else {
       if (a == 1) {
-        console.log("search page");
+        console.log("Search Page");
         searchResults(data);
       } else if (a == 2) {
-        console.log("audio player");
+        console.log("Audio Player");
         loadMedia(data);
       } else if (a == 3) {
+        console.log("Suggestions");
         console.log("doesnt exist yet");
       }
     }

@@ -10,8 +10,14 @@
     display: flex;
 }
 
-#audioList {
+#audioList * {
+    cursor: pointer;
+}
 
+#audioList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #gotoBox {
