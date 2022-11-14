@@ -101,9 +101,7 @@ function loadInfo(audio) {
 
 }
 
-/* Variables */
 var pendingClick;
-/* single/double/triple click */
 function waveformClick(e) {
     if (pendingClick) {
         clearTimeout(pendingClick);
@@ -138,7 +136,6 @@ function waveformClick(e) {
   }
 }
 
-/* Scroll wheel */
 function scrollWheel(e) {
   e.preventDefault();
   let currentVolume = document.getElementById("audioFile").volume;
@@ -169,8 +166,8 @@ function waveformDisplay(consuming) {
   let timePercent = (parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
   let decimalPercent = (waveformImg.width * (parseFloat(timePercent)));
 
-  // progressBar.style.left = (parseFloat(decimalPercent) - 3) + "px";
-  progressBar.style.left = parseFloat(decimalPercent) + "px";
+  /* whatever you subtract by has to be the total width of the progress bar */
+  progressBar.style.left = (parseFloat(decimalPercent) - 3) + "px";
 
   let currentTime = secondsToTime(audioFile.currentTime);
   let currentVolume;
@@ -191,6 +188,10 @@ function waveformDisplay(consuming) {
 
 }
 
+function keyBinds(e) {
+  /* add keybinds here */
+}
+
 function secondsToTime(e){
     const /*h = Math.floor(e / 3600).toString().padStart(2,'0'),*/
           m = Math.floor(e % 3600 / 60).toString().padStart(2,'0'),
@@ -201,9 +202,9 @@ function secondsToTime(e){
     //return `${h}:${m}:${s}`;
 }
 
-/* auto run this function on opening the page */
 function makeIcon() {
   // pause icon to overlay on the waveform
+  // overlay replay button in this function to
 
   if (!document.getElementById("playIcon")) {
     // make the thing
