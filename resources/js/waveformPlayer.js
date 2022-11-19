@@ -211,7 +211,7 @@ function makeIcon() {
     let playIcon = document.createElement("img");
     let waveformPlayer = document.getElementById("waveformPlayer");
 
-    playIcon.src = "/resources/media/icon/playbutton.svg";
+    playIcon.src = "/resources/media/icon/playBtn.svg";
     playIcon.id = "playIcon";
 
     playIcon.addEventListener("click", (e) => {
