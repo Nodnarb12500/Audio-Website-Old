@@ -87,6 +87,7 @@ function searchResults(data) {
       let row = document.createElement("div");
       let name = document.createElement("p");
       let length = document.createElement("p");
+      let addBtn = document.createElement("img");
 
       // let a = document.createElement("a");
       // a.href = "/db/get/" + audio.id;
@@ -100,7 +101,7 @@ function searchResults(data) {
       }
 
       name.innerHTML = "Name: " + audio.name + extraInfo;
-      name.className = "left";
+      name.className = "topLeft";
 
       let starRating = "";
       if (audio.rating != "-1") {
@@ -118,12 +119,20 @@ function searchResults(data) {
         }
       }
 
+      addBtn.src = "/resources/media/icon/addBtn.svg";
+      addBtn.className = "topRight";
+
+      addBtn.addEventListener("click", (e) => {
+        // add audio ID to playlist array
+
+      }, false);
+
       length.innerHTML = "Length: " + audio.length + "<br />Rating: " + starRating;
-      length.className = "right";
+      length.className = "bottomRight";
 
       /* make onclick event to go to manga/id */
-
       row.appendChild(name);
+      row.appendChild(addBtn);
       row.appendChild(length);
 
       let imgPath = "/resources/media/thumbs/" + audio.waveform;
