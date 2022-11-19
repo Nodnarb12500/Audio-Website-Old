@@ -1,30 +1,25 @@
 #!/bin/bash
 
-# This file is for automaing a task that needs done over 4000 times
-# extract each file count the number of pages list the name, the archive name,
-# take shrink it and place it in a thumbnails folder and add the path to a json output
-# use curl to post it to the server?
-
 # Debugging
-set -x
+# set -x
+
+# as i discover what files work without adding extra shit and what doesnt this list will change
+# tested not working: wma
 
 # Variables
 declare -a audio_List
-# as i discover what files work without adding extra shit and what doesnt this list will change
-# tested not working: wma
 mapfile -t audio_List < <( find ./ | grep -i -e .m4a -e .mp3 -e .wav -e .acc -e .flac)
 
-iteration="0"
+# iteration does do anything right now thinking about removing it
+##iteration="0"
 
 thumbs="$(pwd)/thumbs"
 mkdir "$thumbs"
 
-# json variables
-# name, filename, waveform, length, rating
 for i in "${audio_List[@]}"
 do
     # what iteration are we on?
-    iteration=$((iteration + 1))
+    ##iteration=$((iteration + 1))
 
     # input="$i"
     fileName=$(basename -- "$i")
@@ -46,7 +41,7 @@ do
 
     # Generate the Waveform
     res="1280x720" # change me for different resolution
-    # ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=640x320 -filter_complex "[0:a]showwavespic=s=640x320:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" &> /dev/null
+    #ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=640x320 -filter_complex "[0:a]showwavespic=s=640x320:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" &> /dev/null
     ffmpeg -n -i "$i" -f lavfi -i color=c=black:s=$res -filter_complex "[0:a]showwavespic=s=$res:colors=white[fg];[1:v][fg]overlay=format=auto" -frames:v 1 "$thumbs/$output" &> /dev/null
 
     # Upload the data to the Server

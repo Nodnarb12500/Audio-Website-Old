@@ -6,8 +6,21 @@ function getMedia() {
   searchMedia(search, 2);
 }
 
-function getPlaylistItem(a) {
+var playList;
+var arrayIndex;
 
+function getPlaylist() {
+  if (localStorage.getItem("arrayIndex") != null) {
+    // get 2 variables, the list of IDs and the current index of the playlist
+
+    playList = JSON.parse(localStorage.getItem("playList"));
+    arrayIndex = localStorage.getItem("arrayIndex");
+
+    console.log("Grabbed the Stored values");
+  } else { console.log("no stored values"); }
+}
+
+function getPlaylistItem(a) {
   url = window.location.href.split('/');
   let search = url[0] + url[1] + url[2] + "/db/get/" + play_list[a];
 

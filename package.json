@@ -1,7 +1,7 @@
 {
   "name": "Audio Website",
   "version": "1.0.0",
-  "description": "REST-Template",
+  "description": "built off the REST-Template",
   "main": "index.js",
   "scripts": {
     "test": "node index.js"
