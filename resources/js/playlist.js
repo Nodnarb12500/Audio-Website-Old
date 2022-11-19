@@ -10,11 +10,13 @@
  */
 
 // Global Variables
-var playList, arrayIndex;
+var playList = [];
+var arrayIndex;
+// auto run this everytime
+getPlaylist();
 
 function storePlaylist(id) {
     // Add append items to the array and update the local storage variable including the index
-
     playList.push(id);
     console.log(id);
 
@@ -39,14 +41,13 @@ function clearPlaylist() {
 
 function getPlaylist() {
     // needs a catch to skip to the next song
-
     if (localStorage.getItem("arrayIndex") != null) {
         playList = JSON.parse(localStorage.getItem("playlist"));
-        arrayIndex = localStorage.getItem("arrayIndex")
+        arrayIndex = parseInt(localStorage.getItem("arrayIndex"));
 
 
-        console.log("Grabbed the Stored values");
-
+        console.log("Grabbed the Stored values, playlist: " + playList + " index: " + arrayIndex);
+        console.log("current song is: " + playList[arrayIndex])
     } else { 
         console.log("no stored values");
     }
