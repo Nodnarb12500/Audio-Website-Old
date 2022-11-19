@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="31.999998"
+   height="31.999998"
+   viewBox="0 0 8.4666661 8.4666661"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14, custom)"
+   sodipodi:docname="addBtn.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="false"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="24.829854"
+     inkscape:cx="14.800731"
+     inkscape:cy="16.149914"
+     inkscape:window-width="1920"
+     inkscape:window-height="1037"
+     inkscape:window-x="0"
+     inkscape:window-y="18"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="4.2333333,4.2333328"
+       orientation="-1,0"
+       id="guide117"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="4.2333333,4.2333328"
+       orientation="0,1"
+       id="guide119"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="fill:#b3b3b3;stroke-width:0.265428"
+       id="path223"
+       cx="4.2226958"
+       cy="4.2388153"
+       rx="4.2293339"
+       ry="4.2202873"
+       sodipodi:insensitive="true"
+       inkscape:label="circle" />
+    <g
+       id="g325"
+       inkscape:label="Plus">
+      <rect
+         style="fill:#000000;stroke-width:0.243766"
+         id="rect91"
+         width="1.0583333"
+         height="4.2333331"
+         x="3.7041667"
+         y="2.1166666"
+         inkscape:label="rect91" />
+      <rect
+         style="fill:#000000;stroke-width:0.243766"
+         id="rect91-3"
+         width="1.0583333"
+         height="4.2333331"
+         x="3.7041664"
+         y="-6.3499999"
+         transform="rotate(90)" />
+    </g>
+  </g>
+</svg>
