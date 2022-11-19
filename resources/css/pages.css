@@ -2,7 +2,6 @@
 /*
  * this is the CSS for the search bar and
  * radio buttons pagination
- *
  */
 
 /* General Site shit */
@@ -75,7 +74,6 @@ input[type=number] {
 
     position: relative;
 
-    user-drag: none;
     -webkit-user-drag: none;
 
     user-select: none;
@@ -84,16 +82,31 @@ input[type=number] {
     -ms-user-select: none;
 }
 
-.item .left {
+.item .topLeft {
     text-align: left;
     position: absolute;
-    left: 0;
+    left: 5px;
     top: 5px;
     color: white;
     background-color: rgba(0, 0, 0, .4);
 }
 
-.item .right {
+.item .topRight {
+    text-align: right;
+    color: white;
+    background-color: rgba(0, 0, 0, .4);
+
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    /* the image needs moved and shrunk */
+    width: 32px;
+    aspect-ratio: 1/1;
+
+}
+
+.item .bottomRight {
     text-align: right;
     color: white;
     background-color: rgba(0, 0, 0, .4);
@@ -104,7 +117,6 @@ input[type=number] {
     right: 5px;
 
 }
-
 
 /* Search Bar */
 * {
