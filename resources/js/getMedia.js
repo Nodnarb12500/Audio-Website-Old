@@ -6,26 +6,6 @@ function getMedia() {
   searchMedia(search, 2);
 }
 
-var playList;
-var arrayIndex;
-
-function getPlaylist() {
-  if (localStorage.getItem("arrayIndex") != null) {
-    // get 2 variables, the list of IDs and the current index of the playlist
-
-    playList = JSON.parse(localStorage.getItem("playList"));
-    arrayIndex = localStorage.getItem("arrayIndex");
-
-    console.log("Grabbed the Stored values");
-  } else { console.log("no stored values"); }
-}
-
-function getPlaylistItem(a) {
-  url = window.location.href.split('/');
-  let search = url[0] + url[1] + url[2] + "/db/get/" + play_list[a];
-
-}
-
 function loadMedia(data) {
   /* Parse data from server and loop though it */
   var json = data;
@@ -122,11 +102,6 @@ function searchResults(data) {
       addBtn.src = "/resources/media/icon/addBtn.svg";
       addBtn.className = "topRight";
 
-      addBtn.addEventListener("click", (e) => {
-        // add audio ID to playlist array
-
-      }, false);
-
       length.innerHTML = "Length: " + audio.length + "<br />Rating: " + starRating;
       length.className = "bottomRight";
 
@@ -141,8 +116,16 @@ function searchResults(data) {
       // row.appendChild(a);
       row.className = "item";
       row.addEventListener("click", (e) => {
-        window.open(url[0] + "//" + url[2] + "/audio/" + audio.id);
-      })
+        // check if the add button was clicked and only do add button shit, otherwise do normal shit
+        if (e.target.className == "topRight") {
+          console.log(audio.id);
+          storePlaylist(audio.id);
+        
+        } else {
+          window.open(url[0] + "//" + url[2] + "/audio/" + audio.id);
+        }
+      });
+
       audioList.appendChild(row);
     }
   }
