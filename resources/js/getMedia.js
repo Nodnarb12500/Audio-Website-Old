@@ -57,20 +57,15 @@ function search(path, page) {
 }
 
 function searchResults(data) {
-   // turn the json array into HTML
+  // turn the json array into HTML
   audioList.innerHTML = "";
   var json = data;
 
   for (var key in json) {
-    // skip loop if the property is from prototype
     if (!json.hasOwnProperty(key)) continue;
-
     var obj = json[key];
     for (var prop in obj) {
-        // skip loop if the property is from prototype
-        if (!obj.hasOwnProperty(prop)) continue;
-
-      /* Object prop is what i wanted i can now start using the ojects to create html */
+      if (!obj.hasOwnProperty(prop)) continue;
       let audio = JSON.parse(JSON.stringify(obj[prop]));
 
       /* Main shit */
@@ -80,31 +75,17 @@ function searchResults(data) {
       let addBtn = document.createElement("img");
 
       let extraInfo = "";
-      if (audio.artist) {
-        extraInfo = extraInfo.concat("<br />Artist: " + audio.artist);
-      }
-      if (audio.album) {
-        extraInfo = extraInfo.concat("<br />Album: " + audio.album);
-      }
+      if (audio.artist) { extraInfo = extraInfo.concat("<br />Artist: " + audio.artist); }
+      if (audio.album) { extraInfo = extraInfo.concat("<br />Album: " + audio.album); }
 
       name.innerHTML = "Name: " + audio.name + extraInfo;
       name.className = "topLeft";
 
       let starRating = "";
       if (audio.rating != "-1") {
-        for (let i = parseInt(audio.rating); i != 0; i--) {
-          starRating = starRating.concat("&starf;");
-        };
-        /* fill in the rest of the stars with empty ones */
-        for (let i = 5 - parseInt(audio.rating); i != 0; i--) {
-          starRating = starRating.concat("&star;");
-        }
-
-      } else {
-        for (let i = 5; i != 0; i--) {
-          starRating = starRating.concat("&star;");
-        }
-      }
+        for (let i = parseInt(audio.rating); i != 0; i--) { starRating = starRating.concat("&starf;"); }
+        for (let i = 5 - parseInt(audio.rating); i != 0; i--) { starRating = starRating.concat("&star;"); }
+      } else { for (let i = 5; i != 0; i--) { starRating = starRating.concat("&star;"); } }
 
       addBtn.src = "/resources/media/icon/addBtn.svg";
       addBtn.className = "topRight";
@@ -126,9 +107,7 @@ function searchResults(data) {
           console.log(audio.id);
           storePlaylist(audio.id);
         
-        } else {
-          window.open(url[0] + "//" + url[2] + "/audio/" + audio.id);
-        }
+        } else { window.open(url[0] + "//" + url[2] + "/audio/" + audio.id); }
       });
 
       audioList.appendChild(row);
