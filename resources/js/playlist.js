@@ -39,6 +39,11 @@ function clearPlaylist() {
     localStorage.clear();
 }
 
+function getPlaylistPreview() {
+    // a loop that goes though the entire array and creates a preview for each item and appends it to the playlist overflow box
+    
+}
+
 function getPlaylist() {
     // needs a catch to skip to the next song
     if (localStorage.getItem("arrayIndex") != null) {
@@ -47,18 +52,21 @@ function getPlaylist() {
 
 
         console.log("Grabbed the Stored values, playlist: " + playList + " index: " + arrayIndex);
-        console.log("current song is: " + playList[arrayIndex])
+        console.log("current song is: " + playList[arrayIndex]);
     } else { 
         console.log("no stored values");
     }
 }
 
-function getPlaylistItem(a) {
+function getPlaylistItem() {
     // give the waveform player the information it needs
     // hopfully the screen clears and doesnt leave shit in ram? lmao
 
     url = window.location.href.split('/');
-    let search = url[0] + url[1] + url[2] + "/db/get/" + playList[arrayIndex];
+    let search = url[0] + "//" + url[2] + "/db/get/" + playList[arrayIndex];
 
     console.log(search);
+
+    // maybe merge this with get media?
+    searchMedia(search, 2);
 }
