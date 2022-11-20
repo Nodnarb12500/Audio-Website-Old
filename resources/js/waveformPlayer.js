@@ -82,10 +82,10 @@ function loadInfo(audio) {
   audioFile.ontimeupdate = function() {
     waveformDisplay();
   }
-  /*audioFile.onpause = function() {
+  audioFile.onpause = function() {
     // maybe only do this after some amount of time?
-    makeIcon();
-  }*/
+    makeIcon("pause");
+  }
 
   audioPlayer.appendChild(audioFile);
 
@@ -97,8 +97,33 @@ function loadInfo(audio) {
 
 
   /* run extra stuff */
-  makeIcon();
+  waveformDisplay();
+  makeIcon("play");
+  makeDescription(audio);
 
+}
+
+function makeDescription(audio) {
+
+  let row = document.getElementById("description");
+  let name = document.createElement("p");
+
+  //clear the old data.
+  row.innerHTML = "";
+
+  let extraInfo = "";
+  if (audio.artist) {
+    console.log("artist found")
+    extraInfo = extraInfo.concat("<br>Artist: " + audio.artist);
+  }
+  if (audio.album) {
+    console.log("album found");
+    extraInfo = extraInfo.concat("<br>Album: " + audio.album);
+  }
+
+  name.innerHTML = "Name: " + audio.name + extraInfo;
+
+  row.appendChild(name);
 }
 
 var pendingClick;
@@ -128,7 +153,7 @@ function waveformClick(e) {
     }
   } else if (e.button == 1) {
     e.preventDefault();
-    audioFile.currentTime = (e.offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
+    audioFile.currentTime = (offsetX / document.getElementById("waveformImg").width) * audioFile.duration;
     if (document.getElementById("audioFile").paused) {
       document.getElementById("audioFile").play();
     }
@@ -160,7 +185,7 @@ function scrollWheel(e) {
   }
 }
 
-function waveformDisplay(consuming) {
+function waveformDisplay() {
 
   let volume = document.getElementById("bottomLeft");
   let timePercent = (parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
@@ -185,7 +210,6 @@ function waveformDisplay(consuming) {
     volume.innerHTML = currentTime + "<br />Volume: " + currentVolume;
 
   }
-
 }
 
 function keyBinds(e) {
@@ -202,28 +226,78 @@ function secondsToTime(e){
     //return `${h}:${m}:${s}`;
 }
 
-function makeIcon() {
+function makeIcon(icon) {
   // pause icon to overlay on the waveform
   // overlay replay button in this function to
 
-  if (!document.getElementById("playIcon")) {
-    // make the thing
-    let playIcon = document.createElement("img");
-    let waveformPlayer = document.getElementById("waveformPlayer");
+  if (icon == "play") {
+    if (!document.getElementById("playIcon")) {
+      // make the thing
+      let playIcon = document.createElement("img");
+      let waveformPlayer = document.getElementById("waveformPlayer");
 
-    playIcon.src = "/resources/media/icon/playBtn.svg";
-    playIcon.id = "playIcon";
+      playIcon.src = "/resources/media/icon/playBtn.svg";
+      playIcon.id = "playIcon";
+      playIcon.className = "playerControls";
 
-    playIcon.addEventListener("click", (e) => {
-      // on single click unpause audio, and hide button.
-      document.getElementById("audioFile").play();
-      playIcon.style.display = "none";
-    }, false)
+      playIcon.addEventListener("click", (e) => {
+        // on single click unpause audio, and hide button.
+        document.getElementById("audioFile").play();
+        playIcon.style.display = "none";
+      }, false)
 
-    waveformPlayer.appendChild(playIcon);
+      waveformPlayer.appendChild(playIcon);
+
+      } else {
+        document.getElementById("playIcon").style.display = "block";
+
+      }
+  } else if (icon == "pause") {
+    if (!document.getElementById("pauseIcon")) {
+      // make the thing
+      let iconImg = document.createElement("img");
+      let waveformPlayer = document.getElementById("waveformPlayer");
+
+      iconImg.src = "/resources/media/icon/pauseBtn.svg";
+      iconImg.id = "pauseIcon";
+      iconImg.className = "playerControls";
+
+      iconImg.addEventListener("click", (e) => {
+        // on single click unpause audio, and hide button.
+        document.getElementById("audioFile").play();
+        iconImg.style.display = "none";
+      }, false)
+
+      waveformPlayer.appendChild(iconImg);
+
+      } else {
+        document.getElementById("pauseIcon").style.display = "block";
+
+      }
+
+  } else if (icon == "replay") {
+    if (!document.getElementById("replayIcon")) {
+      // make the thing
+      let iconImg = document.createElement("img");
+      let waveformPlayer = document.getElementById("waveformPlayer");
+
+      iconImg.src = "/resources/media/icon/replayBtn.svg";
+      iconImg.className = "playerControls";
+
+      iconImg.addEventListener("click", (e) => {
+        // on single click unpause audio, and hide button.
+        document.getElementById("audioFile").play();
+        iconImg.style.display = "none";
+      }, false)
+
+      waveformPlayer.appendChild(playIcon);
+
+      } else {
+        document.getElementById("pauseIcon").style.display = "block";
+
+      }
 
   } else {
-    document.getElementById("playIcon").style.display = "block";
-
+    console.error("button: " + icon + " Doesnt exist yet!");
   }
 }
