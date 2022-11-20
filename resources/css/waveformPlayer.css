@@ -3,7 +3,7 @@
     margin: 3px;
 }
 
-.container #playIcon {
+.container .playerControls {
     background: unset;
 
     max-width: 256px;
@@ -37,7 +37,6 @@
 }
 
 .container * {
-    user-drag: none;
     -webkit-user-drag: none;
 
     user-select: none;

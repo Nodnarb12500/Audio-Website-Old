@@ -1,5 +1,5 @@
 function getMedia() {
-  /* Ask the server for the manga Data */
+  /* Ask the server for the media Data */
   url = window.location.href.split('/');
   let search = url[0] + "//" + url[2] + "/db/get/" + url[4];
 
@@ -9,6 +9,11 @@ function getMedia() {
 function loadMedia(data) {
   /* Parse data from server and loop though it */
   var json = data;
+
+  // clear the waveform player (mainly for the playlist thing)
+  // clears useless bytes after they have already been loaded by the client lmao
+  document.getElementById("mediaInfo").innerHTML = "";
+  document.getElementById("audioPlayer").innerHTML = "";
 
   for (var key in json) {
     // skip loop if the property is from prototype
@@ -105,7 +110,6 @@ function searchResults(data) {
       length.innerHTML = "Length: " + audio.length + "<br />Rating: " + starRating;
       length.className = "bottomRight";
 
-      /* make onclick event to go to manga/id */
       row.appendChild(name);
       row.appendChild(addBtn);
       row.appendChild(length);

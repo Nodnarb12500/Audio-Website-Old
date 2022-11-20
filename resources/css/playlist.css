@@ -29,6 +29,11 @@ h2 {
     flex: 60%;
 }
 
+#clearPlaylistBtn {
+    /* placeholder to make vscodium shut the fuck up */
+    position: unset;    
+}
+
 .playlistItem {
     display: flex;
     flex-direction: row;
