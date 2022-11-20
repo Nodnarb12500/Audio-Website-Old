@@ -16,24 +16,16 @@ var getJSON = function(url, callback) {
 var url;
 /* get audio lists for the main search menu */
 
-function searchMedia(search, a) {
-  /* read json from a get request and store it */
-  getJSON(search, (err, data) => {
-    if (err !== null) {
-      alert('Something went wrong: ' + err);
-
-    } else {
-      if (a == 1) {
-        console.log("Search Page");
-        searchResults(data);
-      } else if (a == 2) {
-        console.log("Audio Player");
-        loadMedia(data);
-      } else if (a == 3) {
-        console.log("Suggestions");
-        console.log("doesnt exist yet");
+function searchMedia(search) {
+  return new Promise(function(resolve, reject) {
+    getJSON(search, (err, data) => {
+      if (err !== null) {
+        alert("something went wrong: " + err);
+        reject(err);
+      } else {
+        thing = JSON.stringify(data);
+        resolve(thing);
       }
-    }
-
-  });
+    })
+  })
 }

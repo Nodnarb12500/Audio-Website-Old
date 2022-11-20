@@ -84,7 +84,9 @@ function loadInfo(audio) {
   }
   audioFile.onpause = function() {
     // maybe only do this after some amount of time?
-    makeIcon("pause");
+    // if (audioFile.currentTime === audioFile.duration) {
+    //   makeIcon("replay");
+    // }
   }
 
   audioPlayer.appendChild(audioFile);
@@ -206,6 +208,15 @@ function waveformDisplay() {
   if (audioFile.paused) {
     volume.innerHTML = "(paused) " + currentTime + "<br />Volume: " + currentVolume;
 
+    if (audioFile.currentTime === audioFile.duration) {
+      // make replay button
+      makeIcon("replay");
+    } else if (audioFile.currentTime != 0) {
+      // make pause button
+      makeIcon("pause");
+    } else {
+    }
+
   } else {
     volume.innerHTML = currentTime + "<br />Volume: " + currentVolume;
 
@@ -271,7 +282,12 @@ function makeIcon(icon) {
       waveformPlayer.appendChild(iconImg);
 
       } else {
-        document.getElementById("pauseIcon").style.display = "block";
+        if (document.getElementById("playIcon").style.display == "block") {
+          // no place pausebutton
+        } else {
+          document.getElementById("pauseIcon").style.display = "block";
+        }
+        
 
       }
 
@@ -290,10 +306,10 @@ function makeIcon(icon) {
         iconImg.style.display = "none";
       }, false)
 
-      waveformPlayer.appendChild(playIcon);
+      waveformPlayer.appendChild(iconImg);
 
       } else {
-        document.getElementById("pauseIcon").style.display = "block";
+        document.getElementById("replayIcon").style.display = "block";
 
       }
 

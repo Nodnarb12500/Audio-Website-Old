@@ -32,6 +32,8 @@ function removePlaylist(id, index) {
     // remove items from the playlist and update the local storage variable including the index
     // need the index? or can i easily find the index? or can i just cut it out with the thing?
 
+
+
 }
 
 function clearPlaylist() {
@@ -41,7 +43,14 @@ function clearPlaylist() {
 
 function getPlaylistPreview() {
     // a loop that goes though the entire array and creates a preview for each item and appends it to the playlist overflow box
+
+    let row = document.createElement("div");
+    let name = document.createElement("p");
+    let waveformImg = docuemnt.createElement("img");
+
+    for (let i = 0; i < playList.length; i++) {
     
+    }
 }
 
 function getPlaylist() {
@@ -53,6 +62,9 @@ function getPlaylist() {
 
         console.log("Grabbed the Stored values, playlist: " + playList + " index: " + arrayIndex);
         console.log("current song is: " + playList[arrayIndex]);
+
+        /* here place all the loop to go though for running getPlaylistPreview() */
+
     } else { 
         console.log("no stored values");
     }
@@ -68,5 +80,7 @@ function getPlaylistItem() {
     console.log(search);
 
     // maybe merge this with get media?
-    searchMedia(search, 2);
+    searchMedia(search).then(result => {
+        loadMedia(JSON.parse(result));
+    });
 }

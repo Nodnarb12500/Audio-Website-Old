@@ -3,7 +3,11 @@ function getMedia() {
   url = window.location.href.split('/');
   let search = url[0] + "//" + url[2] + "/db/get/" + url[4];
 
-  searchMedia(search, 2);
+  searchMedia(search).then(result => {
+    loadMedia(JSON.parse(result));
+  });
+  
+  console.error("testing some other shit this is broken");
 }
 
 function loadMedia(data) {
@@ -11,7 +15,6 @@ function loadMedia(data) {
   var json = data;
 
   // clear the waveform player (mainly for the playlist thing)
-  // clears useless bytes after they have already been loaded by the client lmao
   document.getElementById("mediaInfo").innerHTML = "";
   document.getElementById("audioPlayer").innerHTML = "";
 
@@ -28,14 +31,12 @@ function loadMedia(data) {
       var audio = JSON.parse(JSON.stringify(obj[prop]));
 
       loadInfo(audio);
-
     }
   }
 }
 
 function search(path, page) {
   // create the search request here and then send it to the search thing
-
   url = window.location.href.split('/');
   page = parseInt(page) - 1;
 
@@ -47,7 +48,15 @@ function search(path, page) {
   }
 
   let search = url[0] + "//" + url[2] + "/db/search/" + path + "/" + page;
-  searchMedia(search, 1);
+
+  var thing;
+
+  // var thing;
+  searchMedia(search).then(result => {
+    console.log(JSON.parse(result));
+    searchResults(JSON.parse(result));
+  });
+
   pagesBar(page);
 }
 
