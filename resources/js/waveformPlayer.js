@@ -10,34 +10,18 @@ function loadInfo(audio) {
   let audioFile = document.createElement("audio");
 
   let extraInfo = "";
-  if (audio.artist) {
-    console.log("artist found")
-    extraInfo = extraInfo.concat("<br>Artist: " + audio.artist);
-  }
-  if (audio.album) {
-    console.log("album found");
-    extraInfo = extraInfo.concat("<br>Album: " + audio.album);
-  }
+  if (audio.artist) { extraInfo = extraInfo.concat("<br>Artist: " + audio.artist); }
+  if (audio.album) { extraInfo = extraInfo.concat("<br>Album: " + audio.album); }
 
   name.innerHTML = "Name: " + audio.name + extraInfo;
   name.id = "topLeft";
 
-  /* somehow convert the likes into stars out of 5 */
   let starRating = "";
-
   if (audio.rating != "-1") {
-    for (let i = parseInt(audio.rating); i != 0; i--) {
-      starRating = starRating.concat("&starf;");
-    };
-    /* fill in the rest of the stars with empty ones */
-    for (let i = 5 - parseInt(audio.rating); i != 0; i--) {
-      starRating = starRating.concat("&star;");
-    }
-
+    for (let i = parseInt(audio.rating); i != 0; i--) { starRating = starRating.concat("&starf;"); }
+    for (let i = 5 - parseInt(audio.rating); i != 0; i--) { starRating = starRating.concat("&star;"); }
   } else {
-    for (let i = 5; i != 0; i--) {
-      starRating = starRating.concat("&star;");
-    }
+    for (let i = 5; i != 0; i--) { starRating = starRating.concat("&star;"); }
   }
 
   length.innerHTML = "Length: " + audio.length + "<br>Rating: " + starRating;
@@ -45,11 +29,10 @@ function loadInfo(audio) {
 
   volume.id = "bottomLeft";
   volume.addEventListener("click", (e) => {
-
-    if (audioFile.muted) {
+    if (audioFile.muted) { 
       audioFile.muted = false;
-    } else {
-      audioFile.muted = true
+    } else { 
+      audioFile.muted = true;
     }
     waveformDisplay();
   }, false);
@@ -78,28 +61,21 @@ function loadInfo(audio) {
   audioFile.src = "/resources/media/Music/" + audio.fileName;
   audioFile.controls = true;
 
-  audioFile.ontimeupdate = function() {
-    waveformDisplay();
-  }
-
+  audioFile.ontimeupdate = function() { waveformDisplay(), false }
   audioPlayer.appendChild(audioFile);
 
-  /* set the POST url for the rating form */
   ratingForm.action = "/db/modify/" + audio.id;
 
-  /* set window title to the current Song */
   document.title = audio.name;
-
 
   /* run extra stuff */
   waveformDisplay();
   makeIcon("play");
   makeDescription(audio);
-
+  addListener();
 }
 
 function makeDescription(audio) {
-
   let row = document.getElementById("description");
   let name = document.createElement("p");
 
@@ -107,17 +83,10 @@ function makeDescription(audio) {
   row.innerHTML = "";
 
   let extraInfo = "";
-  if (audio.artist) {
-    console.log("artist found")
-    extraInfo = extraInfo.concat("<br>Artist: " + audio.artist);
-  }
-  if (audio.album) {
-    console.log("album found");
-    extraInfo = extraInfo.concat("<br>Album: " + audio.album);
-  }
+  if (audio.artist) { extraInfo = extraInfo.concat("<br>Artist: " + audio.artist); }
+  if (audio.album)  { extraInfo = extraInfo.concat("<br>Album: " + audio.album); }
 
   name.innerHTML = "Name: " + audio.name + extraInfo;
-
   row.appendChild(name);
 }
 
@@ -160,7 +129,7 @@ function scrollWheel(e) {
   e.preventDefault();
   let currentVolume = document.getElementById("audioFile").volume;
 
-  if (event.deltaY < 0) {
+  if (e.deltaY < 0) {
     // Volume Up
     if (currentVolume == 1) {
       // stop errors by making it not execute the thing
@@ -169,7 +138,7 @@ function scrollWheel(e) {
     }
 
   }
-  else if (event.deltaY > 0) {
+  else if (e.deltaY > 0) {
     // Volume Down
     if (currentVolume == 0) {
       // Stop execution when volume is down
