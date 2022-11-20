@@ -46,12 +46,8 @@ function search(path, page) {
   } else {
     document.title = "Search: " + path;
   }
-
   let search = url[0] + "//" + url[2] + "/db/search/" + path + "/" + page;
 
-  var thing;
-
-  // var thing;
   searchMedia(search).then(result => {
     console.log(JSON.parse(result));
     searchResults(JSON.parse(result));
@@ -82,9 +78,6 @@ function searchResults(data) {
       let name = document.createElement("p");
       let length = document.createElement("p");
       let addBtn = document.createElement("img");
-
-      // let a = document.createElement("a");
-      // a.href = "/db/get/" + audio.id;
 
       let extraInfo = "";
       if (audio.artist) {
@@ -126,7 +119,6 @@ function searchResults(data) {
       let imgPath = "/resources/media/thumbs/" + audio.waveform;
       row.style.backgroundImage = `url(\"` + imgPath + `\")`;
 
-      // row.appendChild(a);
       row.className = "item";
       row.addEventListener("click", (e) => {
         // check if the add button was clicked and only do add button shit, otherwise do normal shit

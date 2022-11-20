@@ -54,7 +54,6 @@ function loadInfo(audio) {
     waveformDisplay();
   }, false);
 
-
   progressBar.id = "progressBar";
 
   waveform.src = "/resources/media/thumbs/" + audio.waveform;
@@ -81,12 +80,6 @@ function loadInfo(audio) {
 
   audioFile.ontimeupdate = function() {
     waveformDisplay();
-  }
-  audioFile.onpause = function() {
-    // maybe only do this after some amount of time?
-    // if (audioFile.currentTime === audioFile.duration) {
-    //   makeIcon("replay");
-    // }
   }
 
   audioPlayer.appendChild(audioFile);
@@ -188,7 +181,6 @@ function scrollWheel(e) {
 }
 
 function waveformDisplay() {
-
   let volume = document.getElementById("bottomLeft");
   let timePercent = (parseFloat(audioFile.currentTime) / parseFloat(audioFile.duration));
   let decimalPercent = (waveformImg.width * (parseFloat(timePercent)));
@@ -214,7 +206,6 @@ function waveformDisplay() {
     } else if (audioFile.currentTime != 0) {
       // make pause button
       makeIcon("pause");
-    } else {
     }
 
   } else {
