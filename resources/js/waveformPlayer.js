@@ -73,6 +73,7 @@ function loadInfo(audio) {
   makeIcon("play");
   makeDescription(audio);
   addListener();
+  
 }
 
 function makeDescription(audio) {
@@ -92,10 +93,10 @@ function makeDescription(audio) {
 
 var pendingClick;
 function waveformClick(e) {
-    if (pendingClick) {
-        clearTimeout(pendingClick);
-        pendingClick = 0;
-    }// kill any pending single clicks
+  if (pendingClick) {
+      clearTimeout(pendingClick);
+      pendingClick = 0;
+  }// kill any pending single clicks
 
   let offsetX = e.offsetX;
   let offsetY = e.offsetY;
