@@ -8,11 +8,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="/resources/css/main.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/resources/css/ratingRadio.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="/resources/css/waveformPlayer.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="/resources/css/playlist.css" type="text/css" media="screen" />
+        
+
+
+        <script rel="text/javascript" src="/resources/js/getRequest.js"></script>
+        <script rel="text/javascript" src="/resources/js/getMedia.js"></script>
+        <script rel="text/javascript" src="/resources/js/waveformPlayer.js"></script>
+        <script rel="text/javascript" src="/resources/js/playlist.js"></script>
 
     </head>
-    <body>
+    <body onload="getPlaylistItem();">
         <div id="site-box" class="center">
             <div id="title" class="contentItem">
                 <h1>Audio Player</h1>
@@ -21,26 +29,48 @@
 
             <div id="playlistBox">
                 <div id="leftSide">
-                    <div id="mediaInfo" class="contentItem leftSide">
-                        <div class="container" id="waveformPlayer">
-                            <div id="progressBar"></div>
-                            <p id="topLeft">Name: 07-High Voltage (2000 Reprise)</p>
-                            <p id="bottomRight">Length: 03:45<br>Rating: ☆☆☆☆☆</p>
-                            <p id="bottomLeft">03:18<br>Volume: 100%</p>
-                            <img src="/resources/media/thumbs/07-High Voltage (2000 Reprise).avif" id="waveformImg" draggable="false">
-                            <img src="/resources/media/icon/playbutton.svg" id="playIcon">
-                        </div>
-                    </div>
-                    <div id="description">
-                        <p>Name: 07-High Voltage (2000 Reprise)</p>
-                        <p>Artist: Linkin Park</p>
-                        <p>Album: EPs</p>
-                    </div>
-                </div>
+                    <div id="mediaInfo" class="contentItem leftSide"></div>
+                    <div id="description"></div>
+
+                    <div id="ratingBox" class="contentItems">
+                        <!-- this is here so that rating the audio doesnt destroy the site and interupt the user -->
+                        <iframe class="hidden" frameborder="0" name="poster"></iframe>
+        
+                        <!-- the cool star rating system that was a passive pain in the ass t make -->
+                        <form method="POST" id="ratingForm" target="poster">
+                            <label class="StarContainer">
+                                <input type="radio" name="rating" value="1" />
+                                <span id="one" class="checkmark" onclick="prependChecks(1)" ></span>
+                            </label>
+                            <label class="StarContainer">
+                                <input type="radio" name="rating" value="2" />
+                                <span id="two" class="checkmark" onclick="prependChecks(2)"></span>
+                            </label>
+                            <label class="StarContainer">
+                                <input type="radio" name="rating" value="3" />
+                                <span id="three" class="checkmark" onclick="prependChecks(3)"></span>
+                            </label>
+                            <label class="StarContainer">
+                                <input type="radio" name="rating" value="4" />
+                                <span id="four" class="checkmark" onclick="prependChecks(4)"></span>
+                            </label>
+                            <label class="StarContainer">
+                                <input type="radio" name="rating" value="5" />
+                                <span id="five" class="checkmark" onclick="prependChecks(5)"></span>
+                            </label>
+                            <input id="ratingBtn" type="submit" value="Rate" class="button" />
+                        </form>
+                    </div> <!-- ratingBox -->
+                </div> <!-- leftSide -->
+
+                <div id="audioPlayer" class="hidden"></div>
 
                 <div id="rightSide">
                     <div id="playlistTitle">
                         <h2>Playlist</h2>
+                        <button onclick="arrayIndex -= 1;getPlaylistItem();" id="prevBtn">Prev</button>
+                        <button onclick="arrayIndex += 1;getPlaylistItem();" id="nextBtn">Next</button>
+                        <button onclick="localStorage.clear();" id="clearPlaylistBtn">Clear</button>
                     </div>
                     <div id="playlist" class="contentItem">
                         <div class="playlistItem">
