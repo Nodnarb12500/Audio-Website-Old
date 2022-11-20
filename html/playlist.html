@@ -20,7 +20,7 @@
         <script rel="text/javascript" src="/resources/js/playlist.js"></script>
 
     </head>
-    <body onload="getPlaylistItem();">
+    <body onload="getPlaylistItem();getPlaylistPreview();">
         <div id="site-box" class="center">
             <div id="title" class="contentItem">
                 <h1>Audio Player</h1>
@@ -73,34 +73,10 @@
                         <button onclick="localStorage.clear();" id="clearPlaylistBtn">Clear</button>
                     </div>
                     <div id="playlist" class="contentItem">
-                        <div class="playlistItem">
-                            <img src="/resources/media/thumbs/Dust Code.avif" alt="" />
-                            <p>name: Dust Code<br />
-                                artist: mike shinoda<br />
-                                album: Covid streams</p>
-                        </div>
-                        <div class="playlistItem">
-                            <img src="/resources/media/thumbs/Dust Code.avif" alt="" />
-                            <p>name: Dust Code<br />
-                                artist: mike shinoda<br />
-                                album: Covid streams</p>
-                        </div>
-                        <div class="playlistItem">
-                            <img src="/resources/media/thumbs/Dust Code.avif" alt="" />
-                            <p>name: Dust Code<br />
-                                artist: mike shinoda<br />
-                                album: Covid streams</p>
-                        </div>
-                        <div class="playlistItem">
-                            <img src="/resources/media/thumbs/Dust Code.avif" alt="" />
-                            <p>name: Dust Code<br />
-                                artist: mike shinoda<br />
-                                album: Covid streams</p>
-                        </div>
                     </div>
 
                     <hr />
-                    
+
                     <div id="suggestionsTitle">
                         <h2>Related</h2>
                     </div>
