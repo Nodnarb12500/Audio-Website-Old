@@ -1,4 +1,4 @@
-var getJSON = function(url, callback) {
+function getJSON(url, callback) {
     /* Needed for sending requests to the server */
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
