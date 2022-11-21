@@ -1,14 +1,3 @@
-
-/* TODO
- *
- * this will be called on almost every page.
- * 1. fetching and storing the playlist variables will be handled in this file along with storing the current index in the array.
- * 2. this file will eventually handle moving and removing playlist items as well.
- * 3. 
- * 4. 
- * 
- */
-
 // Global Variables
 var playList = [];
 var arrayIndex;
@@ -27,19 +16,11 @@ function storePlaylist(id) {
 }
 
 function removePlaylistItem(id) {
-    // remove items from the playlist and update the local storage variable including the index
-    // need the index? or can i easily find the index? or can i just cut it out with the thing?
-
-
-    console.log(playList.indexOf(id));
-
     playList.splice(playList.indexOf(id), 1);
 
-    /* save the new array after */
     localStorage.setItem("playlist", JSON.stringify(playList));
     if (arrayIndex == null) { arrayIndex = 0; }
     localStorage.setItem("arrayIndex", arrayIndex);
-
 }
 
 function movePlaylistItems() {
@@ -74,12 +55,19 @@ function addListener() {
     }, false);
 
     audioPlayer.addEventListener("ended", (e) => {
-        console.log("++");
-        arrayIndex++;
-        localStorage.setItem("arrayIndex", arrayIndex);
-        getPlaylistItem();
+        if (arrayIndex >= arrayIndex.length - 1) {
+            if (looping == true) {
+                arrayIndex = 0;
+                localStorage.setItem("arrayIndex", arrayIndex);
+            } else {
+                // just stop executing this?
+            }
+        } else {
+            arrayIndex++;
+            localStorage.setItem("arrayIndex", arrayIndex);
+            getPlaylistItem();
+        }
     });
-
 }
 
 function getPlaylistPreview() {
@@ -135,13 +123,9 @@ function getPlaylist() {
         arrayIndex = parseInt(localStorage.getItem("arrayIndex"));
 
     } else { console.log("no stored values"); }
-
 }
 
 async function getPlaylistItem() {
-    // give the waveform player the information it needs
-    // hopfully the screen clears and doesnt leave shit in ram? lmao
-
     url = window.location.href.split('/');
     let search = url[0] + "//" + url[2] + "/db/get/" + playList[arrayIndex];
 
