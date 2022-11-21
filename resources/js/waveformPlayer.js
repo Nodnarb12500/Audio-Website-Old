@@ -176,6 +176,8 @@ function waveformDisplay() {
     } else if (audioFile.currentTime != 0) {
       // make pause button
       makeIcon("pause");
+      if (!localStorage.getItem("playing")) {
+      } else { localStorage.setItem("playing", null); }
     }
 
   } else {

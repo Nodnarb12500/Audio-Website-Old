@@ -1,6 +1,7 @@
 // Global Variables
 var playList = [];
 var arrayIndex;
+var looping = true;
 // auto run this everytime
 getPlaylist();
 
@@ -55,10 +56,11 @@ function addListener() {
     }, false);
 
     audioPlayer.addEventListener("ended", (e) => {
-        if (arrayIndex >= arrayIndex.length - 1) {
+        if (arrayIndex >= playList.length - 1) {
             if (looping == true) {
                 arrayIndex = 0;
                 localStorage.setItem("arrayIndex", arrayIndex);
+                getPlaylistItem();
             } else {
                 // just stop executing this?
             }
@@ -117,7 +119,6 @@ function getPlaylistPreview() {
 }
 
 function getPlaylist() {
-    // needs a catch to skip to the next song
     if (localStorage.getItem("arrayIndex") != null) {
         playList = JSON.parse(localStorage.getItem("playlist"));
         arrayIndex = parseInt(localStorage.getItem("arrayIndex"));
