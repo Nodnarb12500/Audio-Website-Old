@@ -73,7 +73,7 @@ function loadInfo(audio) {
   makeIcon("play");
   makeDescription(audio);
   addListener();
-  
+
 }
 
 function makeDescription(audio) {
