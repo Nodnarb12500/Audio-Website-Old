@@ -1,7 +1,5 @@
 
-#mediaInfo * {
-    margin: 3px;
-}
+#mediaInfo * { margin: 3px; }
 
 .container .playerControls {
     background: unset;
@@ -31,10 +29,7 @@
     align-items: center;
 }
 
-.container br {
-    /* firefox will "ignore" br tags without this */
-    position: unset;
-}
+.container br { position: unset; /* firefox will "ignore" br tags without this */ }
 
 .container * {
     -webkit-user-drag: none;

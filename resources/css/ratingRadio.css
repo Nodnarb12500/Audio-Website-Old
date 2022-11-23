@@ -2,8 +2,8 @@
 /* The extremely annoying to make checkboxes */
 .StarContainer {
     position: relative;
-    padding-left: 20px;
     cursor: pointer;
+    padding-left: 20px;
     font-size: 45px;
 }
 
@@ -13,14 +13,8 @@
     cursor: pointer;
 }
 
-.checkmark:after {
-    content: '\2606';
-}
+.checkmark:after { content: '\2606'; }
 
-.StarContainer input:checked ~ .checkmark:after {
-    content: '\2605';
-}
+.StarContainer input:checked ~ .checkmark:after { content: '\2605'; }
 
-.checkBefore:after {
-    content: "\2605";
-}
+.checkBefore:after { content: "\2605"; }

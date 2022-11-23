@@ -1,7 +1,5 @@
 
-h2 {
-    text-align: right;
-}
+h2 { text-align: right; }
 
 #playlistBox {
     display: flex;
@@ -11,9 +9,7 @@ h2 {
 
 }
 
-#waveformPlayer {
-    margin-top: 4em;
-}
+#waveformPlayer { margin-top: 4em; }
 
 #description {
     text-align: left;
@@ -25,13 +21,11 @@ h2 {
     flex: 40%;
 }
 
-#leftSide {
-    flex: 60%;
-}
+#leftSide { flex: 60%; }
 
 #clearPlaylistBtn {
     /* placeholder to make vscodium shut the fuck up */
-    position: unset;    
+    position: unset;
 }
 
 .playlistItem {
@@ -46,10 +40,7 @@ h2 {
     margin: 3px;
 }
 
-.playlistItem p {
-    margin: 5px 0;
-}
-
+.playlistItem p { margin: 5px 0; }
 .playlistItem img {
     max-height: 64px;
     margin-right: 10px;
@@ -57,29 +48,17 @@ h2 {
 }
 
 @media (max-width: 830px) {
-    #waveformPlayer {
-        margin-top: unset;
-    }
+    #waveformPlayer { margin-top: unset; }
 
     #playlistBox {
         flex-direction: column;
         align-items: center;
     }
 
-    #rightSide {
-        width: 100%;
-    }
-
-    h2 {
-        text-align: center !important;
-    }
+    #rightSide { width: 100%; }
+    h2 { text-align: center !important; }
 }
 @media (max-width: 350px) {
-    .playlistItem {
-        max-height: unset;
-    }
-
-    .playlistItem img {
-        border-radius: unset;
-    }
+    .playlistItem { max-height: unset; }
+    .playlistItem img { border-radius: unset; }
 }

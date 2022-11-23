@@ -5,13 +5,8 @@
  */
 
 /* General Site shit */
-#advancedSearch {
-    display: flex;
-}
-
-#audioList * {
-    cursor: pointer;
-}
+#advancedSearch { display: flex; }
+#audioList * { cursor: pointer; }
 
 #audioList {
     display: flex;
@@ -36,9 +31,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+input[type=number] { /*-moz-*/appearance: textfield; }
 /* Annoying arrows gone */
 
 #gotoBar {
@@ -117,9 +110,7 @@ input[type=number] {
 }
 
 /* Search Bar */
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 /* Style the search field */
 #searchbar {
@@ -144,9 +135,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background: var(--curr-buttonHover);
-}
+button:hover { background: var(--curr-buttonHover); }
 
 /* Customize the label (the container) */
 .radioContainer {
@@ -162,9 +151,7 @@ button:hover {
     user-select: none;
 }
 
-.radioContainer {
-    word-break: keep-all;
-}
+.radioContainer { word-break: keep-all; }
 
 /* Hide the browser's default radio button */
 .radioContainer input {
@@ -177,7 +164,6 @@ button:hover {
 /* Create a custom radio button */
 .checkmark {
     position: absolute;
-    /* top: 0; */
     left: 0;
     height: 25px;
     width: 25px;
@@ -185,15 +171,9 @@ button:hover {
     border-radius: 50%;
 }
 
-/* On mouse-over, add a grey background color */
-.radioContainer:hover input ~ .checkmark {
-    background-color: #ccc;
-}
 
-/* When the radio button is checked, add a #2196F3 background */
-.radioContainer input:checked ~ .checkmark {
-    background-color: var(--curr-button);
-}
+.radioContainer:hover input ~ .checkmark { background-color: #ccc; }
+.radioContainer input:checked ~ .checkmark { background-color: var(--curr-button); }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
@@ -203,9 +183,7 @@ button:hover {
 }
 
 /* Show the indicator (dot/circle) when checked */
-.radioContainer input:checked ~ .checkmark:after {
-    display: block;
-}
+.radioContainer input:checked ~ .checkmark:after { display: block; }
 
 /* Style the indicator (dot/circle) */
 .radioContainer .checkmark:after {
@@ -217,13 +195,9 @@ button:hover {
     background: white;
 }
 
-#tagButtons {
-    margin-top: 12px;
-}
+#tagButtons { margin-top: 12px; }
 
-#searchBox {
-    margin-bottom: 16px;
-}
+#searchBox { margin-bottom: 16px; }
 
 hr.hidden {
     display: block;
@@ -231,9 +205,7 @@ hr.hidden {
 }
 
 /* Pagination */
-.pagination {
-    display: inline-block;
-}
+.pagination { display: inline-block; }
 
 .pagination a {
     color: var(--curr-text);
@@ -249,10 +221,7 @@ hr.hidden {
     color: white;
 }
 
-.pagination a:hover:not(.active) {
-    /* background-color: #ddd; */
-    background-color: var(--curr-buttonHover);
-}
+.pagination a:hover:not(.active) { background-color: var(--curr-buttonHover); }
 
 .pagination a:first-child {
     border-top-left-radius: 5px;

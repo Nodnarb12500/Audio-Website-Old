@@ -34,18 +34,9 @@ body {
 	color: var(--curr-text);
 }
 
-a {
-	color: var(--curr-link);
-
-}
-
-p {
-	color: var(--curr-text);
-}
-
-hr {
-	color: var(--curr-text);
-}
+a { color: var(--curr-link); }
+p { color: var(--curr-text); }
+hr { color: var(--curr-text); }
 
 #site-box {
 
@@ -58,13 +49,8 @@ hr {
 	margin: auto;
 }
 
-.button {
-    margin: 10px;
-}
-
-.hidden {
-	display: none;
-}
+.button { margin: 10px; }
+.hidden { display: none; }
 
 .contentItems {
 }
