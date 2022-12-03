@@ -21,6 +21,11 @@ function deleteAudio(id) {
 
 /* Searching the database */
 
+function databaseSize() {
+  return knex("audios").count('*');
+}
+
+
 function getAudio(id) {
   return knex("audios").where("id", id);
 }
@@ -40,6 +45,7 @@ function getTwentyFive(search, page) {
 
 module.exports = {
   createAudio,
+  databaseSize,
   modifyAudio,
   deleteAudio,
   getAudio,

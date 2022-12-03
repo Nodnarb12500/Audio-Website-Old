@@ -46,6 +46,12 @@ app.get("/db/search/:search/:page", async (req, res) => {
   res.status(200).json({results});
 });
 
+app.get("/db/databaseSize", async (req, res) => {
+  var results = await db.databaseSize();
+  results = results[0]["count(*)"];
+  res.status(200).json({results});
+});
+
 /* user interactable pages */
 app.get("/", (req, res) => {
   res.sendFile('html/index.html', {root: __dirname});
