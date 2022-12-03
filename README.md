@@ -5,7 +5,10 @@ Since I've been using a lot of gimped REST API shit i thought maybe i should mak
 
 # Dependencies
 ## Script
+Bash
+Curl
 FFmpeg
+
 
 ## Server
 NodeJS
@@ -15,6 +18,7 @@ NodeJS
  - sqlite3
 
 # useful sites/pages
+
 ## audio reference
 https://html.spec.whatwg.org/multipage/media.html#audio
 
