@@ -28,7 +28,8 @@ app.post("/db/modify/:id", async (req, res) => {
 
 /* You might want to leave this commented out */
 // app.get("/db/rm/:id", async (req, res) => {
-//   // mark stuff for delete and hide instead?
+//   // mark stuff as hidden instead?
+//   // this will only remove the database entrie and not the files
 //   await db.deleteAudio(req.params.id);
 //   res.status(200).json({success: true});
 // });
@@ -47,6 +48,7 @@ app.get("/db/search/:search/:page", async (req, res) => {
 });
 
 app.get("/db/databaseSize", async (req, res) => {
+  // helps figure out that maximum page for skipping to
   var results = await db.databaseSize();
   results = results[0]["count(*)"];
   res.status(200).json({results});

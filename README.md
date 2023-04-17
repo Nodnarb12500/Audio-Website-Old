@@ -17,6 +17,14 @@ NodeJS
  - knex
  - sqlite3
 
+## Browser side JS
+jxl decoder
+
+# issues
+currently my linux OS doesnt have ffmpeg with jxl support yet and i am unable to test jxl without converting images from another source file
+testing with PNG to JXL resulted in larger files then just using the PNGs.
+
+
 # useful sites/pages
 
 ## audio reference
