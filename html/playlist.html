@@ -82,6 +82,9 @@
                             <button onclick="arrayIndex -= 1;getPlaylistItem();" id="prevBtn">Prev</button>
                             <button onclick="arrayIndex += 1;getPlaylistItem();" id="nextBtn">Next</button>
                             <button onclick="localStorage.clear();" id="clearPlaylistBtn">Clear</button>
+                            <button onclick="playlistLoop(loopSong);" id="loopSongBtn">Loop</button>
+                            <button onclick="playlistLoop(loopList);" id="LoopListBtn">Loop Song</button>
+                            <button onclick="playlistLoop(Shuffle);" id="ShuffleBtn">Shuffle</button>
                         </div>
                         <div id="playlist" class="contentItem"></div>
                     </section>
