@@ -103,7 +103,7 @@ function getPlaylistPreview() {
                     waveformImg.src = "/resources/media/thumbs/" + audio.waveform;
             
                     deleteBtn.innerText = "remove";
-                    deleteBtn.addEventListener("click", (e) => { removePlaylistItem(audio.id); }, false);
+                    deleteBtn.addEventListener("click", (e) => { removePlaylistItem(audio.id);getPlaylistPreview }, false);
 
                     row.className = "playlistItem";
 
@@ -126,7 +126,7 @@ function getPlaylist() {
     } else { console.log("no stored values"); }
 }
 
-async function getPlaylistItem() {
+/*async*/ function getPlaylistItem() {
     url = window.location.href.split('/');
     let search = url[0] + "//" + url[2] + "/db/get/" + playList[arrayIndex];
 
