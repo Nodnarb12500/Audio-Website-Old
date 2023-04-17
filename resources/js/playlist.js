@@ -109,6 +109,13 @@ function getPlaylistPreview() {
                     }, false);
 
                     row.className = "playlistItem";
+                    row.id = i;
+
+                    row.addEventListener("click", (e) => {
+                        // change array index to the song displayed in this box
+                        arrayIndex = e.target.id;
+                        getPlaylistItem();
+                    }, false)
 
                     row.appendChild(waveformImg);
                     row.appendChild(name);
@@ -135,7 +142,7 @@ function getPlaylist() {
     // if arrayIndex > playlist.length reset to 0
     if (arrayIndex >= playList.length) {
         arrayIndex = 0;
-    } else if (arrayIndex <= 0) {
+    } else if (arrayIndex < 0) {
         arrayIndex = playList.length - 1;
     }
 
