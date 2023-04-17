@@ -7,6 +7,7 @@ getPlaylist();
 
 function storePlaylist(id) {
     // Add append items to the array and update the local storage variable including the index
+    getPlaylist();
     playList.push(id);
     console.log(id);
 
