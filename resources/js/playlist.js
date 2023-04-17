@@ -104,6 +104,7 @@ function getPlaylistPreview() {
                     waveformImg.src = "/resources/media/thumbs/" + audio.waveform;
             
                     deleteBtn.innerText = "remove";
+                    deleteBtn.id = "removeBtn";
                     deleteBtn.addEventListener("click", (e) => { 
                         removePlaylistItem(audio.id);
                         e.target.parentElement.remove();
@@ -117,6 +118,9 @@ function getPlaylistPreview() {
                         // I don't like this but I don't Know another way yet
                         if (e.target.parentElement.id == "playlist") {
                             arrayIndex = e.target.id;
+                        } else if (e.target.id == "removeBtn" ) {
+                            // dont do anything lmao
+                            arrayIndex = arrayIndex - 1;
                         } else {
                             arrayIndex = e.target.parentElement.id;
                         }
