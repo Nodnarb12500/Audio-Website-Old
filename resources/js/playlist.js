@@ -113,7 +113,13 @@ function getPlaylistPreview() {
 
                     row.addEventListener("click", (e) => {
                         // change array index to the song displayed in this box
-                        arrayIndex = e.target.id;
+                        // I don't like this but I don't Know another way yet
+                        if (e.target.parentElement.id == "playlist") {
+                            arrayIndex = e.target.id;
+                        } else {
+                            arrayIndex = e.target.parentElement.id;
+                        }
+
                         getPlaylistItem();
                     }, false)
 
