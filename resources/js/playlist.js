@@ -103,7 +103,10 @@ function getPlaylistPreview() {
                     waveformImg.src = "/resources/media/thumbs/" + audio.waveform;
             
                     deleteBtn.innerText = "remove";
-                    deleteBtn.addEventListener("click", (e) => { removePlaylistItem(audio.id);getPlaylistPreview }, false);
+                    deleteBtn.addEventListener("click", (e) => { 
+                        removePlaylistItem(audio.id);
+                        e.target.parentElement.remove();
+                    }, false);
 
                     row.className = "playlistItem";
 
