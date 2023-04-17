@@ -131,6 +131,14 @@ function getPlaylist() {
 
 /*async*/ function getPlaylistItem() {
     url = window.location.href.split('/');
+
+    // if arrayIndex > playlist.length reset to 0
+    if (arrayIndex >= playList.length) {
+        arrayIndex = 0;
+    } else if (arrayIndex <= 0) {
+        arrayIndex = playList.length - 1;
+    }
+
     let search = url[0] + "//" + url[2] + "/db/get/" + playList[arrayIndex];
 
     // maybe merge this with get media?
